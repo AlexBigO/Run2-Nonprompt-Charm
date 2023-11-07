@@ -152,6 +152,10 @@ def main(cfg):
     name_outgraphs = cfg["output"]["graph_errors"]["names"]
     title_outgraph = cfg["output"]["graph_errors"]["title"]
 
+    if len(name_graph_errors[ID_NUM]) != len(name_outgraphs):
+        print("\033[91mERROR: different number of TGraphErrors in input and output!\033[0m")
+        sys.exit(0)
+
     name_fully_correlated_systematics = cfg["systematics"]["fully_correlated"]
     name_relative_systematics = cfg["systematics"]["relative"]
     name_syst_not_included_in_tot = cfg["systematics"]["not_included_in_tot"]
@@ -175,14 +179,14 @@ def main(cfg):
         sys.exit(0)
 
     # check if there is already a graph for BR systematics in numerator, add it if not there
-    if not any("BR" in name for name in name_graph_errors[ID_NUM]):
+    if not any(LABEL_BR_SYST in name for name in name_graph_errors[ID_NUM]):
         g_br = graph_errors("RelSystBR", title_outgraph)
         g_br.SetPoint(0, 0.5, 1)
         g_br.SetPointError(0, 0.3, cfg["input"]["cross_section"]["branching_ratios_syst"][ID_NUM])
         graphs_num.append(g_br)
         name_relative_systematics[ID_NUM].append(LABEL_BR_SYST)
     # check if there is already a graph for BR systematics in denominator, add it if not there
-    if not any("BR" in name for name in name_graph_errors[ID_DENOM]):
+    if not any(LABEL_BR_SYST in name for name in name_graph_errors[ID_DENOM]):
         g_br = graph_errors("RelSyst"+LABEL_BR_SYST, title_outgraph)
         g_br.SetPoint(0, 0.5, 1)
         g_br.SetPointError(0, 0.3, cfg["input"]["cross_section"]["branching_ratios_syst"][ID_DENOM])
@@ -216,8 +220,9 @@ def main(cfg):
         g_ratio = graph_errors(name_outgraph, title_outgraph)
         g_ratios.append(g_ratio)
 
-    g_ratios.append(graph_errors("gRatioSyst"+LABEL_TOTAL_SYST+"Wo"+"".join(name_syst_not_included_in_tot),
-                                 title_outgraph))
+    if not any(LABEL_TOTAL_SYST in name for name in name_outgraphs):
+        g_ratios.append(graph_errors("gRatioSyst"+LABEL_TOTAL_SYST+"Wo"+"".join(name_syst_not_included_in_tot),
+                                     title_outgraph))
 
     for i_pt in range(h_ratio.GetXaxis().GetNbins()):
         i_point = i_pt
