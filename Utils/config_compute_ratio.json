@@ -1,0 +1,59 @@
+{
+  "input": {
+    "name_files": [
+      "/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/5_CrossSection/wptweights_cent/cross_section.root",
+      "/home/abigot/AnalysisNonPromptDplus/CrossSection_D0_pPb5TeV_FD.root"
+    ],
+    "name_histos": [
+      "hCorrYield",
+      "hCrossSection"
+    ],
+    "cross_section": {
+      "contains_branching_ratio": true,
+      "branching_ratios": [
+        0.0898,
+        0.0395
+      ],
+      "branching_ratios_syst": [
+        0.017,
+        0.0076
+      ]
+    },
+    "name_graph_errors": [
+      ["gCorrYieldSystYieldExtr", "gCorrYieldSystSelEff", "gCorrYieldSystTrEff",
+      "gCorrYieldSystPIDEff", "gCorrYieldSystPtShape", "gCorrYieldSystFD",
+      "gCorrYieldSystNorm"],
+      ["gCrossSectionSystYieldExtr", "gCrossSectionSystSelEff", "gCrossSectionSystTrEff",
+      "gCrossSectionSystPIDEff", "gCrossSectionSystPtShape", "gCrossSectionSystFD",
+      "gCrossSectionSystNorm"]
+    ]
+  },
+  "systematics": {
+    "fully_correlated": [
+      "TrEff",
+      "Norm"
+    ],
+    "relative": [
+      ["Norm"],
+      []
+    ],
+    "not_included_in_tot": ["BR"]
+  },
+  "output": {
+    "name_file": "./test_ratio.root",
+    "option_file": "recreate",
+    "histo": {
+      "name": "hRatio",
+      "title": "; #it{p}_{T} (GeV/#it{c}); D^{+}/D^{0}"
+    },
+    "graph_errors": {
+      "names": [
+        "gRatioSystYieldExtr", "gRatioSystSelEff", "gRatioSystTrEff",
+        "gRatioSystPIDEff", "gRatioSystPtShape", "gRatioSystFD",
+        "gRatioRelSystNorm"
+      ],
+      "name_branching_ratio": "gRatioRelSystBR",
+      "title": "; #it{p}_{T} (GeV/#it{c}); D^{+}/D^{0}"
+    }
+  }
+}

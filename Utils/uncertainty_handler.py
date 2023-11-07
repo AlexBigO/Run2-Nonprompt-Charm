@@ -5,6 +5,7 @@ author: Alexandre Bigot <alexandre.bigot@cern.ch>, Strasbourg University
 """
 
 import numpy as np
+from ROOT import TGraphErrors  # pylint:disable=no-name-in-module
 
 
 class UncertaintyPropagator:
@@ -12,7 +13,7 @@ class UncertaintyPropagator:
     Class for uncertainty propagation using matrix formalism
     """
 
-    # pylint:disable = too-many-arguments,too-many-locals
+    # pylint:disable = too-many-arguments,too-many-locals,too-many-branches
     def __init__(self, x, sigma, corr_triu, name_func, coefs, is_sigma_rel=False):
         """
         Method to initialise class members
@@ -61,11 +62,11 @@ class UncertaintyPropagator:
         # fill weight matrix
         if name_func == "weighted_product":
             if is_sigma_rel:
-                for i, (coef, x_i) in enumerate(zip(coefs, x)):
-                    self.m_weight[i][i] = coef / x_i
-            else:
                 for i, coef in enumerate(coefs):
                     self.m_weight[i][i] = coef
+            else:
+                for i, (coef, x_i) in enumerate(zip(coefs, x)):
+                    self.m_weight[i][i] = coef / x_i
         elif name_func == "weighted_sum":
             weight_tot = np.sum([coef_i * x_i for (coef_i, x_i) in zip(coefs, x)])
             if is_sigma_rel:
@@ -169,3 +170,15 @@ class UncertaintyPropagator:
         """
 
         return np.sqrt(self.get_variance(mean))
+
+
+def graph_errors(name, title):
+    """
+    Helper method for easy definition and setting of TGraphErrors instance
+    """
+
+    graph = TGraphErrors(1)
+    graph.SetName(name)
+    graph.SetTitle(title)
+
+    return graph
