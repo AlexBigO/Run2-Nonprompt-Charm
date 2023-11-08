@@ -1,0 +1,47 @@
+{
+  "input": {
+    "name_files": [
+      "../Results/RpPb_D0_Dplus_Nonprompt_Weighted_Average.root"
+    ],
+    "name_mean_objects": [
+      "hRpPb"
+    ],
+    "name_syst_objects": [
+      "gRpPbSystTotWoNorm"
+    ]
+  },
+  "output": {
+    "name_file": "../Plots/RpPb_D0_Dplus_Nonprompt_Weighted_Average.root",
+    "option_file": "recreate",
+    "extension": ["pdf", "png"]
+  },
+  "plot_options": {
+    "canvas": {
+      "width": 800,
+      "height": 800,
+      "title_xaxis": "#it{p}_{T} (GeV/#it{c})",
+      "title_yaxis": "R_{pPb}",
+      "xlimits": [2, 16],
+      "ylimits": [0.6, 1.6],
+      "logx": false,
+      "logy": false
+    },
+    "legend": {
+      "show": true,
+      "xlimits": [0.4, 0.9],
+      "ylimits": [0.7, 0.8],
+      "titles": ["Non-prompt (D^{0} + D^{+})"],
+      "options": ["lp"],
+      "size_text": 0.04
+    },
+    "latex": {
+      "size_text": 0.04,
+      "x_top": [0.15, 0.15],
+      "y_top": [0.92, 0.87],
+      "entry": [
+        "THIS WORK",
+        "p-Pb, #sqrt{s} = 5.02 TeV       -0.96 < #it{y}_{cms} < 0.04"
+      ]
+    }
+  }
+}
