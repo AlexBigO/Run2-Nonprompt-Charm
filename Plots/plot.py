@@ -9,12 +9,12 @@ import argparse
 import json
 import sys
 
-from ROOT import TCanvas, TFile, TLatex, TLegend, kAzure, kBlack, kFullCircle
-sys.path.append('..')
+from ROOT import TCanvas, TFile, TLatex, TLegend, kAzure, kFullCircle
+sys.path.append("..")
 from Utils.style_formatter import set_global_style, set_object_style
 
 
-# pylint:disable=too-many-locals
+# pylint:disable=too-many-locals,too-many-statements
 def main(cfg):
     """
     Main function
@@ -43,6 +43,7 @@ def main(cfg):
     ylimits = cfg["plot_options"]["canvas"]["ylimits"]
     logx = cfg["plot_options"]["canvas"]["logx"]
     logy = cfg["plot_options"]["canvas"]["logy"]
+    colors = cfg["plot_options"]["colors"]
 
     # define canvas
     c = TCanvas("c", "", width_canvas, height_canvas)
@@ -74,8 +75,8 @@ def main(cfg):
             leg.AddEntry(mean_objects[-1], titles_legend[i], option_legend[i])
 
     # format style
-    set_object_style(mean_objects[0], color=kAzure+4, markercolo=kAzure+4, markerstyle=kFullCircle)
-    set_object_style(syst_objects[0], linecolor=kAzure+4, fillstyle=0)
+    set_object_style(mean_objects[0], color=colors[0], markercolor=colors[0], markerstyle=kFullCircle)
+    set_object_style(syst_objects[0], linecolor=colors[0], fillstyle=0)
     mean_objects[0].DrawCopy("psame")
 
     syst_objects[0].Draw("2")

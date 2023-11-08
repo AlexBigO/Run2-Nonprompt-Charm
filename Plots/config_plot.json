@@ -26,6 +26,9 @@
       "logx": false,
       "logy": false
     },
+    "colors": [
+      864
+    ],
     "legend": {
       "show": true,
       "xlimits": [0.4, 0.9],
