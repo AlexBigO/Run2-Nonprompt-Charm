@@ -210,7 +210,13 @@ void DrawCutVarFit(bool isPreliminary = kTRUE, uint8_t particle = kDplus) {
   leg->AddEntry(hRawYieldsVsCutReSum, "Total", "l");
   leg->Draw();
 
-  c1->SaveAs("./CutVarFitDplusFD.pdf");
+  if (particle == kD0) {
+    c1->SaveAs("./CutVarFitDzeroFD.pdf");
+    c1->SaveAs("./CutVarFitDzeroFD.eps");
+  } else if (particle == kDplus) {
+    c1->SaveAs("./CutVarFitDplusFD.pdf");
+    c1->SaveAs("./CutVarFitDplusFD.eps");
+  }
 }
 
 void SetStyle() {
