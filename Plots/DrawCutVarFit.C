@@ -35,58 +35,93 @@ Double_t yvaluncPrompt[21] = {0., 0., 0., 0., 0., 0., 0., 0., 0., 0., 0.,
 
 bool DrawAllPoints = false;
 
-void DrawCutVarFit(bool isPreliminary = kTRUE) {
+enum Particles: uint8_t {
+  kD0 = 0,
+  kDplus,
+  kLambdac
+};
+
+void DrawCutVarFit(bool isPreliminary = kTRUE, uint8_t particle = kDplus) {
 
   //  TGaxis::SetMaxDigits(3);
   gStyle->SetOptTitle(0);
   gStyle->SetOptStat(0);
 
-  TFile *CutVarFile =
-      new TFile("/Users/jon/alice/DmesonAnalysis_new-mod/CutVariation/"
-                "centralFD_weightptcent_newcentral/"
-                "CutVary_FD_centralFD_weightptcent_newcentral.root",
-                "read");
-  TH1F *hRawYieldsVsCutPt_pT3_4 =
-      (TH1F *)CutVarFile->Get("hRawYieldsVsCutPt_pT3_4");
-  TH1F *hRawYieldPromptVsCut_pT3_4 =
-      (TH1F *)CutVarFile->Get("hRawYieldPromptVsCut_pT3_4");
-  TH1F *hRawYieldFDVsCut_pT3_4 =
-      (TH1F *)CutVarFile->Get("hRawYieldFDVsCut_pT3_4");
-  TH1F *hRawYieldsVsCutReSum_pT3_4 =
-      (TH1F *)CutVarFile->Get("hRawYieldsVsCutReSum_pT3_4");
+  TFile *CutVarFile = nullptr;
 
-  SetStyleHisto(hRawYieldsVsCutPt_pT3_4);
-  SetStyleHisto(hRawYieldPromptVsCut_pT3_4);
-  SetStyleHisto(hRawYieldFDVsCut_pT3_4);
-  SetStyleHisto(hRawYieldsVsCutReSum_pT3_4);
+  // D
+  TH1F *hRawYieldsVsCutPt = nullptr;
+  TH1F *hRawYieldPromptVsCut = nullptr;
+  TH1F *hRawYieldFDVsCut = nullptr;
+  TH1F *hRawYieldsVsCutReSum = nullptr;
 
-  hRawYieldsVsCutPt_pT3_4->SetMarkerStyle(20);
-  hRawYieldsVsCutPt_pT3_4->SetMarkerSize(1);
-  hRawYieldsVsCutPt_pT3_4->SetMarkerColor(kBlack);
-  hRawYieldsVsCutPt_pT3_4->SetLineColor(kBlack);
+  // For D0
+  if (particle == kD0) {
+    CutVarFile =
+        new TFile("/Users/jon/alice/DmesonAnalysis_new-mod/CutVariation/"
+                  "centralFD_weightptcent_newcentral/"
+                  "CutVary_FD_centralFD_weightptcent_newcentral.root",
+                  "read");
+    hRawYieldsVsCutPt =
+        (TH1F *)CutVarFile->Get("hRawYieldsVsCutPt_pT3_4");
+    hRawYieldPromptVsCut =
+        (TH1F *)CutVarFile->Get("hRawYieldPromptVsCut_pT3_4");
+    hRawYieldFDVsCut =
+        (TH1F *)CutVarFile->Get("hRawYieldFDVsCut_pT3_4");
+    hRawYieldsVsCutReSum =
+        (TH1F *)CutVarFile->Get("hRawYieldsVsCutReSum_pT3_4");
+  }
 
-  hRawYieldPromptVsCut_pT3_4->SetMarkerStyle(33);
-  hRawYieldPromptVsCut_pT3_4->SetMarkerSize(1);
-  hRawYieldPromptVsCut_pT3_4->SetMarkerColor(kRed + 1);
-  hRawYieldPromptVsCut_pT3_4->SetLineColor(kRed + 1);
+  // For D+
+  if (particle == kDplus) {
+    CutVarFile =
+        new TFile("/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/3_YieldFraction/wptweights_cent/cutvar_output.root");
+    hRawYieldsVsCutPt =
+        (TH1F *)CutVarFile->Get("hRawYieldsVsCutPt_pT4_5");
+    hRawYieldPromptVsCut =
+        (TH1F *)CutVarFile->Get("hRawYieldPromptVsCut_pT4_5");
+    hRawYieldFDVsCut =
+        (TH1F *)CutVarFile->Get("hRawYieldFDVsCut_pT4_5");
+    hRawYieldsVsCutReSum =
+        (TH1F *)CutVarFile->Get("hRawYieldsVsCutReSum_pT4_5");
+  }
 
-  hRawYieldFDVsCut_pT3_4->SetMarkerStyle(33);
-  hRawYieldFDVsCut_pT3_4->SetMarkerSize(1);
-  hRawYieldFDVsCut_pT3_4->SetMarkerColor(kAzure + 4);
-  hRawYieldFDVsCut_pT3_4->SetLineColor(kAzure + 4);
+  SetStyleHisto(hRawYieldsVsCutPt);
+  SetStyleHisto(hRawYieldPromptVsCut);
+  SetStyleHisto(hRawYieldFDVsCut);
+  SetStyleHisto(hRawYieldsVsCutReSum);
 
-  hRawYieldsVsCutReSum_pT3_4->SetMarkerStyle(33);
-  hRawYieldsVsCutReSum_pT3_4->SetMarkerSize(1);
-  hRawYieldsVsCutReSum_pT3_4->SetMarkerColor(kGreen + 2);
-  hRawYieldsVsCutReSum_pT3_4->SetLineColor(kGreen + 2);
+  hRawYieldsVsCutPt->SetMarkerStyle(20);
+  hRawYieldsVsCutPt->SetMarkerSize(1);
+  hRawYieldsVsCutPt->SetMarkerColor(kBlack);
+  hRawYieldsVsCutPt->SetLineColor(kBlack);
 
-  hRawYieldsVsCutPt_pT3_4->GetYaxis()->SetTitle("Raw yield");
-  hRawYieldsVsCutPt_pT3_4->GetYaxis()->SetMaxDigits(3);
-  hRawYieldsVsCutPt_pT3_4->GetXaxis()->SetTitle("ML based selection");
-  hRawYieldsVsCutPt_pT3_4->SetMinimum(0.1);
-  hRawYieldsVsCutPt_pT3_4->SetMaximum(12000);
-  hRawYieldsVsCutPt_pT3_4->SetLineWidth(2);
-  hRawYieldsVsCutPt_pT3_4->GetYaxis()->SetTitleOffset(1.);
+  hRawYieldPromptVsCut->SetMarkerStyle(33);
+  hRawYieldPromptVsCut->SetMarkerSize(1);
+  hRawYieldPromptVsCut->SetMarkerColor(kRed + 1);
+  hRawYieldPromptVsCut->SetLineColor(kRed + 1);
+
+  hRawYieldFDVsCut->SetMarkerStyle(33);
+  hRawYieldFDVsCut->SetMarkerSize(1);
+  hRawYieldFDVsCut->SetMarkerColor(kAzure + 4);
+  hRawYieldFDVsCut->SetLineColor(kAzure + 4);
+
+  hRawYieldsVsCutReSum->SetMarkerStyle(33);
+  hRawYieldsVsCutReSum->SetMarkerSize(1);
+  hRawYieldsVsCutReSum->SetMarkerColor(kGreen + 2);
+  hRawYieldsVsCutReSum->SetLineColor(kGreen + 2);
+
+  hRawYieldsVsCutPt->GetYaxis()->SetTitle("Raw yield");
+  hRawYieldsVsCutPt->GetYaxis()->SetMaxDigits(3);
+  hRawYieldsVsCutPt->GetXaxis()->SetTitle("ML based selection");
+  hRawYieldsVsCutPt->SetMinimum(0.1);
+  if (particle == kD0) {
+    hRawYieldsVsCutPt->SetMaximum(12000);
+  } else if (particle == kDplus) {
+    hRawYieldsVsCutPt->SetMaximum(4000);
+  }
+  hRawYieldsVsCutPt->SetLineWidth(2);
+  hRawYieldsVsCutPt->GetYaxis()->SetTitleOffset(1.);
 
   TCanvas *c1 = new TCanvas("c1", "c1", 0, 0, 750, 750);
   gStyle->SetOptStat(0);
@@ -98,14 +133,14 @@ void DrawCutVarFit(bool isPreliminary = kTRUE) {
   c1->SetRightMargin(0.03);
   c1->cd();
 
-  hRawYieldsVsCutPt_pT3_4->Draw();
-  hRawYieldPromptVsCut_pT3_4->Draw("HISTsame");
-  hRawYieldPromptVsCut_pT3_4->SetFillStyle(3154);
-  hRawYieldPromptVsCut_pT3_4->SetFillColor(kRed + 1);
-  hRawYieldFDVsCut_pT3_4->Draw("HISTsame");
-  hRawYieldFDVsCut_pT3_4->SetFillStyle(3145);
-  hRawYieldFDVsCut_pT3_4->SetFillColor(kAzure + 4);
-  hRawYieldsVsCutReSum_pT3_4->Draw("HISTsame");
+  hRawYieldsVsCutPt->Draw();
+  hRawYieldPromptVsCut->Draw("HISTsame");
+  hRawYieldPromptVsCut->SetFillStyle(3154);
+  hRawYieldPromptVsCut->SetFillColor(kRed + 1);
+  hRawYieldFDVsCut->Draw("HISTsame");
+  hRawYieldFDVsCut->SetFillStyle(3145);
+  hRawYieldFDVsCut->SetFillColor(kAzure + 4);
+  hRawYieldsVsCutReSum->Draw("HISTsame");
   //  info.DrawLatex(0.65, 0.85, "-0.96 < #it{y} < 0.04");
 
   //  TLatex inforef;
@@ -129,14 +164,18 @@ void DrawCutVarFit(bool isPreliminary = kTRUE) {
   infos.SetTextSize(25);
   infos.DrawLatex(0.20, 0.83,
                   "p#font[122]{-}Pb, #sqrt{#it{s}_{NN}} = 5.02 TeV");
-  infos.DrawLatex(0.7, 0.88, "#font[122]{-}0.96 < #it{y} < 0.04");
+  infos.DrawLatex(0.65, 0.88, "#font[122]{-}0.96 < #it{y}_{cms} < 0.04");
 
   TLatex infoPt;
   infoPt.SetNDC();
   infoPt.SetTextFont(43);
   infoPt.SetTextSize(30);
-  infoPt.DrawLatex(0.55, 0.72, "3 < #it{p}_{T} < 4 GeV/#it{c}");
 
+  if (particle == kD0) {
+    infoPt.DrawLatex(0.55, 0.72, "3 < #it{p}_{T} < 4 GeV/#it{c}");
+  } else if (particle == kDplus) {
+    infoPt.DrawLatex(0.55, 0.72, "4 < #it{p}_{T} < 5 GeV/#it{c}");
+  }
   //  TLatex info5;
   //  info5.SetNDC();
   //  info5.SetTextFont(43);
@@ -165,11 +204,13 @@ void DrawCutVarFit(bool isPreliminary = kTRUE) {
   leg->SetMargin(0.46);
   leg->SetTextSize(28);
   leg->SetTextFont(43);
-  leg->AddEntry(hRawYieldsVsCutPt_pT3_4, "Data", "p");
-  leg->AddEntry(hRawYieldPromptVsCut_pT3_4, "Prompt D^{0}", "F");
-  leg->AddEntry(hRawYieldFDVsCut_pT3_4, "Non-prompt D^{0}", "F");
-  leg->AddEntry(hRawYieldsVsCutReSum_pT3_4, "Total", "l");
+  leg->AddEntry(hRawYieldsVsCutPt, "Data", "p");
+  leg->AddEntry(hRawYieldPromptVsCut, "Prompt D^{0}", "F");
+  leg->AddEntry(hRawYieldFDVsCut, "Non-prompt D^{0}", "F");
+  leg->AddEntry(hRawYieldsVsCutReSum, "Total", "l");
   leg->Draw();
+
+  c1->SaveAs("./CutVarFitDplusFD.pdf");
 }
 
 void SetStyle() {
