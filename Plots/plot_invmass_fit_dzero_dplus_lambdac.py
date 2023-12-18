@@ -258,7 +258,7 @@ def main(particle, i_pt, cfg, batch):
     fit_tot.Draw("same")
 
     lat_alice.DrawLatex(0.19, 0.89, 'ALICE')
-    lat_label.DrawLatex(0.19, 0.82, 'p#font[122]{-}Pb, #sqrt{#it{s}} = 5.02 TeV')
+    lat_label.DrawLatex(0.19, 0.82, 'p#font[122]{-}Pb, #sqrt{#it{s}_{NN}} = 5.02 TeV')
     lat_label.SetTextSize(17)
     draw_info(lat_label, particle)
     lat_label.DrawLatex(0.19, 0.70, f'{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}}')
