@@ -41,6 +41,12 @@ GEV2MEV = 1000
 WIDTH = 520
 HEIGHT = 500
 
+# text size
+SIZE_TEXT_LAT_ALICE = 26
+SIZE_TEXT_LAT_LABEL_FOR_COLL_SYSTEM = 22
+SIZE_TEXT_LAT_LABEL = 18
+SIZE_TEXT_LEGEND = 20
+
 
 def get_name_infile(particle):
     """
@@ -223,13 +229,12 @@ def main(particle, i_pt, cfg, batch):
 
     lat_alice = TLatex()
     lat_alice.SetNDC()
-    lat_alice.SetTextSize(26)
+    lat_alice.SetTextSize(SIZE_TEXT_LAT_ALICE)
     lat_alice.SetTextFont(43)
     lat_alice.SetTextColor(kBlack)
 
     lat_label = TLatex()
     lat_label.SetNDC()
-    lat_label.SetTextSize(22)
     lat_label.SetTextFont(43)
     lat_label.SetTextColor(kBlack)
 
@@ -241,7 +246,7 @@ def main(particle, i_pt, cfg, batch):
     legend.SetBorderSize(0)
     legend.SetFillStyle(0)
     legend.SetTextFont(43)
-    legend.SetTextSize(17)
+    legend.SetTextSize(SIZE_TEXT_LEGEND)
     legend.AddEntry(fit_tot, 'Total fit function', 'l')
     legend.AddEntry(fit_bkg, 'Combinatorial', 'l')
 
@@ -258,14 +263,14 @@ def main(particle, i_pt, cfg, batch):
     fit_tot.Draw("same")
 
     lat_alice.DrawLatex(0.19, 0.89, 'ALICE')
+    lat_label.SetTextSize(SIZE_TEXT_LAT_LABEL_FOR_COLL_SYSTEM)
     lat_label.DrawLatex(0.19, 0.82, 'p#font[122]{-}Pb, #sqrt{#it{s}_{NN}} = 5.02 TeV')
-    lat_label.SetTextSize(17)
+    lat_label.SetTextSize(SIZE_TEXT_LAT_LABEL)
     draw_info(lat_label, particle)
     lat_label.DrawLatex(0.19, 0.70, f'{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}}')
     lat_label.DrawLatex(0.19, 0.64, str_mu)
     lat_label.DrawLatex(0.19, 0.58, str_sigma)
     lat_label.DrawLatex(0.19, 0.52, str_sig)
-    lat_label.SetTextSize(17)
 
     legend.Draw()
 
