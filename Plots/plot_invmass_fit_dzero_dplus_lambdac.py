@@ -45,7 +45,7 @@ HEIGHT = 500
 SIZE_TEXT_LAT_ALICE = 26
 SIZE_TEXT_LAT_LABEL_FOR_COLL_SYSTEM = 22
 SIZE_TEXT_LAT_LABEL = 18
-SIZE_TEXT_LEGEND = 20
+SIZE_TEXT_LEGEND = 18
 
 
 def get_name_infile(particle):
@@ -238,6 +238,11 @@ def main(particle, i_pt, cfg, batch):
     lat_label.SetTextFont(43)
     lat_label.SetTextColor(kBlack)
 
+    # lat_label = TLatex()
+    # lat_label.SetNDC()
+    # lat_label.SetTextFont(43)
+    # lat_label.SetTextColor(kBlack)
+
     str_mu = f"#mu = ({mean:.0f} #pm {err_mean:.0f}) MeV/#it{{c}}^{{2}}"
     str_sigma = f"#sigma = {sigma:.0f} MeV/#it{{c}}^{{2}}"
     str_sig = f'#it{{S}} = {signal:.0f} #pm {err_signal:.0f}'
@@ -248,7 +253,7 @@ def main(particle, i_pt, cfg, batch):
     legend.SetTextFont(43)
     legend.SetTextSize(SIZE_TEXT_LEGEND)
     legend.AddEntry(fit_tot, 'Total fit function', 'l')
-    legend.AddEntry(fit_bkg, 'Combinatorial', 'l')
+    legend.AddEntry(fit_bkg, '#splitline{Combinatorial}{background}', 'l')
 
     c = TCanvas("c", "", WIDTH, HEIGHT)
     frame = c.DrawFrame(mass_mins[i_pt], ymin, mass_maxs[i_pt], ymax, title)
@@ -268,6 +273,7 @@ def main(particle, i_pt, cfg, batch):
     lat_label.SetTextSize(SIZE_TEXT_LAT_LABEL)
     draw_info(lat_label, particle)
     lat_label.DrawLatex(0.19, 0.70, f'{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}}')
+    lat_label.DrawLatex(0.65, 0.89, '-0.96 < #it{y}_{cms} < 0.04')
     lat_label.DrawLatex(0.19, 0.64, str_mu)
     lat_label.DrawLatex(0.19, 0.58, str_sigma)
     lat_label.DrawLatex(0.19, 0.52, str_sig)
