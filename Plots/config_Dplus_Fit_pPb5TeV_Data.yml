@@ -1,0 +1,71 @@
+pPb5TeVPrompt:
+    Particle: 'Dplus'
+    FixSigma: 0
+    SigmaFile: ''
+    SigmaMultFactor: 1.
+    FixMean: 0
+    MeanFile: ''
+    PtMin: [ 2, 3, 4, 5, 6, 7, 8, 10, 12, 16 ] #[ 2, 3, 4, 5, 6, 8, 10, 12, 16 ]
+    PtMax: [ 3, 4, 5, 6, 7, 8, 10, 12, 16, 24 ] #[ 3, 4, 5, 6, 8, 10, 12, 16, 24 ]
+    MassMin: [ 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74 ] 
+    MassMax: [ 2.00, 2.00, 2.00, 2.00, 1.98, 1.98, 1.98, 1.98, 1.98, 1.98 ]
+    Rebin: [ 6, 6, 6, 6, 8, 8, 8, 8, 10, 10 ]
+    InclSecPeak: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    SigmaSecPeak: []
+    SigmaFileSecPeak: ''
+    SigmaMultFactorSecPeak: 1.
+    FixSigmaToFirstPeak: 0
+    UseLikelihood: 1
+    BkgFunc: [ 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo' ]
+    SgnFunc: [ 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus' ]
+    FixSigmaRatio: 0 # used only if SgnFunc = k2GausSigmaRatioPar
+    SigmaRatioFile: ""
+    BoundMean: 0 # 0: Do not set limits on mean range, 1: the mean is set to be between MassMin[i] and MassMax[i]
+    EnableRef: false
+
+# prompt in FD bins
+# pp5TeVPrompt:
+#     Particle: 'Dplus'
+#     FixSigma: 0
+#     SigmaFile: ''
+#     SigmaMultFactor: 1.
+#     FixMean: 0
+#     MeanFile: ''
+#     PtMin: [ 2, 3, 4, 5, 6, 8, 10, 12 ]
+#     PtMax: [ 3, 4, 5, 6, 8, 10, 12, 16 ]
+#     MassMin: [ 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74 ] 
+#     MassMax: [ 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00, 2.00 ]
+#     Rebin: [ 2, 2, 2, 2, 2, 2, 4, 4 ]
+#     InclSecPeak: [0, 0, 0, 0, 0, 0, 0, 0 ]
+#     SigmaSecPeak: []
+#     SigmaFileSecPeak: ''
+#     SigmaMultFactorSecPeak: 1.
+#     FixSigmaToFirstPeak: 0
+#     UseLikelihood: 1
+#     BkgFunc: [ 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo' ]
+#     SgnFunc: [ 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus' ]
+
+pPb5TeVFD:
+    Particle: 'Dplus'
+    FixSigma: 1
+    SigmaFile: '/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/1_RawYieldExtraction/rawYield_Dplus_prompt_enhanced.root'
+    SigmaMultFactor: 1.
+    FixMean: 0
+    MeanFile: ''
+    PtMin: [ 2, 3, 4, 5, 6, 7, 8, 10, 12, 16 ] #[ 2, 3, 4, 5, 6, 8, 10, 12, 16 ]
+    PtMax: [ 3, 4, 5, 6, 7, 8, 10, 12, 16, 24 ] #[ 3, 4, 5, 6, 8, 10, 12, 16, 24 ]
+    MassMin: [ 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74, 1.74 ] 
+    MassMax: [ 2.00, 2.00, 2.00, 2.00, 1.98, 1.98, 1.98, 1.98, 1.98, 1.98 ]
+    Rebin: [ 6, 6, 6, 6, 8, 8, 8, 8, 10, 10 ]
+    InclSecPeak: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
+    SigmaSecPeak: []
+    SigmaFileSecPeak: ''
+    SigmaMultFactorSecPeak: 1.
+    FixSigmaToFirstPeak: 0
+    UseLikelihood: 1
+    BkgFunc: [ 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo', 'kExpo' ]
+    SgnFunc: [ 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus', 'kGaus' ]
+    FixSigmaRatio: 0 # used only if SgnFunc = k2GausSigmaRatioPar
+    SigmaRatioFile: ""
+    BoundMean: 0 # 0: Do not set limits on mean range, 1: the mean is set to be between MassMin[i] and MassMax[i]
+    EnableRef: false

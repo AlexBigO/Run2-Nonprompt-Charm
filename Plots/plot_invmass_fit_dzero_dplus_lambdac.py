@@ -152,8 +152,8 @@ def draw_info(lat_label, particle):
         info = "#Lambda_{c}^{+}  #rightarrow pK^{0}_{S} and charge conj."
         fnonprompt = "#it{f}_{ non-prompt}^{ raw} = 0.549 #pm  0.138 (stat.) #pm 0.055 (syst.)"
 
-    lat_label.DrawLatex(0.19, 0.76, info)
-    lat_label.DrawLatex(0.19, 0.16, fnonprompt)
+    lat_label.DrawLatex(0.18, 0.76, info)
+    lat_label.DrawLatex(0.18, 0.16, fnonprompt)
 
 
 def save_canvas(canvas, particle, pt_mins, pt_maxs, i_pt):
@@ -239,7 +239,7 @@ def main(particle, i_pt, cfg, batch):
     lat_label.SetTextColor(kBlack)
 
     str_mu = f"#mu = ({mean:.0f} #pm {err_mean:.0f}) MeV/#it{{c}}^{{2}}"
-    str_sigma = f"#sigma = {sigma:.1f} MeV/#it{{c}}^{{2}}"
+    str_sigma = f"#sigma = {sigma:.0f} MeV/#it{{c}}^{{2}}"
     str_sig = f'#it{{S}} = {signal:.0f} #pm {err_signal:.0f}'
 
     legend = TLegend(0.62, 0.58, 0.85, 0.72)
