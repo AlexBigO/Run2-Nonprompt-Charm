@@ -197,7 +197,7 @@ void makeCrossSection_pPb_NonPrompt_noFONLL_D0Dplus(bool isPreliminary = kTRUE, 
   href->GetYaxis()->SetTitle(
       "d^{2}#sigma/(d#it{y} d#it{p}_{T}) (#mub GeV^{-1}#it{c})");
   href->GetXaxis()->SetTitle("#it{p}_{T} (GeV/#it{c})");
-  href->SetMinimum(0.2);
+  href->SetMinimum(0.02);
   href->SetMaximum(700000);
   SetStyleHisto(href);
   href->SetLineWidth(1);
@@ -229,7 +229,7 @@ void makeCrossSection_pPb_NonPrompt_noFONLL_D0Dplus(bool isPreliminary = kTRUE, 
   p1->SetLeftMargin(0.17);
   p1->SetTopMargin(0.05);
   p1->SetRightMargin(0.03);
-  href->GetXaxis()->SetRangeUser(0, 36);
+  //href->GetXaxis()->SetRangeUser(0, 36);
   href->Draw("");
 
   c1->cd();
@@ -294,15 +294,15 @@ void makeCrossSection_pPb_NonPrompt_noFONLL_D0Dplus(bool isPreliminary = kTRUE, 
   TLatex info2;
   info2.SetNDC();
   info2.SetTextFont(43);
-  info2.SetTextSize(19);
+  info2.SetTextSize(20);
   //  info2.DrawLatex(0.21, 0.19, "#pm3.7% lumi. unc. not shown");
   //  info2.DrawLatex(0.21, 0.22, "#pm0.76% BR unc. not shown");
 
-  info2.DrawLatex(0.55, 0.45, "#pm3.7% lumi. unc. not shown");
+  info2.DrawLatex(0.54, 0.45, "#pm 3.7% lumi. unc. not shown");
   if (particle == kD0) {
-    info2.DrawLatex(0.55, 0.5, "#pm0.76% BR unc. not shown");
+    info2.DrawLatex(0.54, 0.5, "#pm 0.76% BR unc. not shown");
   } else if (particle == kDplus) {
-    info2.DrawLatex(0.55, 0.5, "#pm1.7% BR unc. not shown");
+    info2.DrawLatex(0.54, 0.5, "#pm 1.7% BR unc. not shown");
   }
 
   //  gPOWHEGB->Draw("e5ssame");
@@ -318,7 +318,7 @@ void makeCrossSection_pPb_NonPrompt_noFONLL_D0Dplus(bool isPreliminary = kTRUE, 
   leg->SetFillStyle(0);
   leg->SetBorderSize(0);
   leg->SetMargin(0.46);
-  leg->SetTextSize(25);
+  leg->SetTextSize(26);
   leg->SetTextFont(43);
   if (particle == kD0) {
     leg->AddEntry(hD0[2], "Non-prompt D^{0}", "pl");
