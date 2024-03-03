@@ -279,7 +279,8 @@ def main(particle, i_pt, cfg, batch):
     SetObjectStyle(hmass, linewidth=3, linecolor=kBlack)
     SetObjectStyle(fit_tot, linewidth=3, linecolor=kBlue)
     SetObjectStyle(fit_bkg, linewidth=3, linecolor=kRed, linestyle=2)
-    SetObjectStyle(fit_refl, linewidth=3, linecolor=kGreen)
+    if particle == D0:
+        SetObjectStyle(fit_refl, linewidth=3, linecolor=kGreen)
 
     hmass.Draw("same")
     fit_bkg.Draw("same")
