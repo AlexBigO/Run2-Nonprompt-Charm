@@ -229,7 +229,6 @@ def main(particle, i_pt, cfg, batch):
 
     if particle == D0:
         fit_tot = file.Get(f"fTot_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
-#    print(f"fTot_{pt_mins[i_pt]:.0f}_{pt_maxs[i_pt]:.0f}")
         fit_bkg = file.Get(f"fBkg_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
         fit_refl = file.Get(f"fRefl_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
     else:
@@ -270,7 +269,8 @@ def main(particle, i_pt, cfg, batch):
     legend.SetTextSize(SIZE_TEXT_LEGEND)
     legend.AddEntry(fit_tot, 'Total fit function', 'l')
     legend.AddEntry(fit_bkg, '#splitline{Combinatorial}{background}', 'l')
-    legend.AddEntry(fit_refl, 'K#minus#pi reflected', 'l')
+    if particle == D0:
+        legend.AddEntry(fit_refl, 'K#minus#pi reflected', 'l')
 
     c = TCanvas("c", "", WIDTH, HEIGHT)
     frame = c.DrawFrame(mass_mins[i_pt], ymin, mass_maxs[i_pt], ymax, title)
