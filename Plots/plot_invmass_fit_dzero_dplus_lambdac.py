@@ -193,7 +193,7 @@ def main(particle, i_pt, cfg, batch):
     - i_pt (int): pT bin number
     """
 
-    SetGlobalStyle(padleftmargin=0.14, padbottommargin=0.125, titleoffsety=1.3, titleoffsetx=1., maxdigits=3)
+    SetGlobalStyle(padleftmargin=0.14, padtopmargin=0.045, padbottommargin=0.125, titleoffsety=1.3, titleoffsetx=1., maxdigits=3)
 
     # import confiruables
     pt_mins = cfg["pPb5TeVFD"]["PtMin"]
