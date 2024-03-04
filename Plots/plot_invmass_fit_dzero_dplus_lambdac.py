@@ -66,8 +66,7 @@ def get_name_infile(particle):
     if particle == D0:
         name_infile = "../Results/D0/RawYieldPlotPaper.root"
     elif particle == DPLUS:
-        name_infile = "/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/1_RawYieldExtraction/" \
-            + "rawYield_Dplus_nonprompt_enhanced.root"
+        name_infile = "../Results/Dplus/rawYield_Dplus_nonprompt_enhanced.root"
     elif particle == LAMBDAC_TO_PKPI:
         name_infile = ""
     elif particle == LAMBDAC_TO_PK0S:
@@ -222,6 +221,8 @@ def main(particle, i_pt, cfg, batch):
     bin_max = hmass.GetMaximumBin()
     if particle == D0:
         ymin, ymax = 0.01, 1.6*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
+    elif particle == DPLUS:
+        ymin, ymax = 40, 1.3*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
     else:
         ymin, ymax = 50, 1.3*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
     title = f"{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}};{title_xaxis};" \

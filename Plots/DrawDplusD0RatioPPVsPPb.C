@@ -123,8 +123,8 @@ void DrawDplusD0RatioPPVsPPb() {
   hrefPrompt->SetTitle("");
   hrefPrompt->GetYaxis()->SetTitle("Non-prompt D^{+}/D^{0}");
   hrefPrompt->GetXaxis()->SetTitle("#it{p}_{T} (GeV/#it{c})");
-  hrefPrompt->SetMinimum(0.105);
-  hrefPrompt->SetMaximum(1.07);
+  hrefPrompt->SetMinimum(0.081);
+  hrefPrompt->SetMaximum(1.09);
   SetStyleHisto(hrefPrompt);
   hrefPrompt->SetLineWidth(1);
   // hrefPrompt->GetXaxis()->SetLimits(1.35, 22.);
@@ -355,9 +355,9 @@ void DrawDplusD0RatioPPVsPPb() {
   TLatex info;
   info.SetNDC();
   info.SetTextFont(43);
-  info.SetTextSize(33);
+  info.SetTextSize(34);
   info.DrawLatex(0.2, 0.89, "ALICE");
-  info.SetTextSize(27);
+  info.SetTextSize(30);
   info.DrawLatex(0.2, 0.84, "#sqrt{#it{s}_{NN}} = 5.02 TeV");
   // info.DrawLatex(0.67, 0.89, "-0.96 < #it{y}_{cms} < 0.04");
   info.SetTextSize(25);
@@ -378,15 +378,15 @@ void DrawDplusD0RatioPPVsPPb() {
   //  unit->Draw("same");
   // hCroSecpp->Draw("same");
 
-  TLegend *leg = new TLegend(0.43, 0.84, 0.73, 0.93);
+  TLegend *leg = new TLegend(0.5, 0.84, 0.72, 0.93);
   leg->SetFillColor(0);
   leg->SetFillStyle(0);
   leg->SetBorderSize(0);
-  leg->SetMargin(0.46);
+  leg->SetMargin(0.25);
   leg->SetTextSize(27);
   leg->SetTextFont(43);
-  leg->AddEntry(RpPbFDD0, "p#font[122]{-}Pb, -0.96 < #it{y}_{cms} < 0.04", "p");
-  leg->AddEntry(promptRpPb, "pp,     -0.50 < #it{y}_{cms} < 0.50", "p");
+  leg->AddEntry(RpPbFDD0, "p#font[122]{-}Pb, #font[122]{-}0.96 < #it{y}_{cms} < 0.04", "p");
+  leg->AddEntry(promptRpPb, "pp,     #font[122]{-}0.50 < #it{y}_{cms} < 0.50", "p");
   leg->Draw();
 
   // TLine *unit = new TLine(0, 1, 38, 1);

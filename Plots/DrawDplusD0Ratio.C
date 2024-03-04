@@ -54,7 +54,7 @@ void DrawDplusD0Ratio() {
     promptFileHEP = new TFile("./HEPData-ins1738950-v1-root.root", "read");
     promptdir = (TDirectoryFile *)promptFileHEP->Get("RpPb D0, Figure 8");
   } else if (particle == kDplus) {
-    promptFileHEP = new TFile("/home/abigot/AnalysisNonPromptDplus/HEPData-ins1738950-v1-D+_D0,_Figure_13.root", "read");
+    promptFileHEP = new TFile("/home/abigot/Run2-Nonprompt-Charm/Results/HEPData-ins1738950-v1-D+_D0,_Figure_13.root", "read");
     promptdir = (TDirectoryFile *)promptFileHEP->Get("D+-D0, Figure 13");
   }
 
@@ -125,8 +125,8 @@ void DrawDplusD0Ratio() {
   hrefPrompt->SetTitle("");
   hrefPrompt->GetYaxis()->SetTitle("D^{+}/D^{0}");
   hrefPrompt->GetXaxis()->SetTitle("#it{p}_{T} (GeV/#it{c})");
-  hrefPrompt->SetMinimum(0.105);
-  hrefPrompt->SetMaximum(1.07);
+  hrefPrompt->SetMinimum(0.081);
+  hrefPrompt->SetMaximum(1.09);
   SetStyleHisto(hrefPrompt);
   hrefPrompt->SetLineWidth(1);
   // hrefPrompt->GetXaxis()->SetLimits(0, 35);
@@ -357,11 +357,12 @@ void DrawDplusD0Ratio() {
   TLatex info;
   info.SetNDC();
   info.SetTextFont(43);
-  info.SetTextSize(33);
+  info.SetTextSize(34);
   info.DrawLatex(0.2, 0.89, "ALICE");
-  info.SetTextSize(27);
+  info.SetTextSize(30);
   info.DrawLatex(0.2, 0.84, "p#font[122]{-}Pb, #sqrt{#it{s}_{NN}} = 5.02 TeV");
-  info.DrawLatex(0.66, 0.89, "-0.96 < #it{y}_{cms} < 0.04");
+   info.SetTextSize(27);
+  info.DrawLatex(0.66, 0.89, "#font[122]{-}0.96 < #it{y}_{cms} < 0.04");
   info.SetTextSize(25);
   info.DrawLatex(0.21, 0.16, "#pm 1.9% BR unc. not shown");
 
@@ -386,7 +387,7 @@ void DrawDplusD0Ratio() {
   leg->SetBorderSize(0);
   leg->SetMargin(0.46);
   leg->SetTextFont(43);
-  leg->SetTextSize(28);
+  leg->SetTextSize(30);
   leg->AddEntry(RpPbFDD0, "Non-prompt", "p");
   leg->AddEntry(promptRpPb, "Prompt", "p");
   leg->Draw();

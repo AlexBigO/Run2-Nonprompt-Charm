@@ -48,7 +48,7 @@ pPb5TeVPrompt:
 pPb5TeVFD:
     Particle: 'Dplus'
     FixSigma: 1
-    SigmaFile: '/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/1_RawYieldExtraction/rawYield_Dplus_prompt_enhanced.root'
+    SigmaFile: '../Results/Dplus/rawYield_Dplus_prompt_enhanced.root'
     SigmaMultFactor: 1.
     FixMean: 0
     MeanFile: ''
