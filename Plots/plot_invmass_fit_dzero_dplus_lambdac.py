@@ -22,7 +22,7 @@ import argparse
 
 import yaml
 from ROOT import (TF1, TCanvas, TDatabasePDG, TFile, TLatex, TLegend, TMath,
-                  TMCParticle, gROOT, kAzure, kBlack, kBlue, kFullCircle, kRed)
+                  TMCParticle, gROOT, kAzure, kBlack, kBlue, kGreen, kFullCircle, kRed)
 
 from StyleFormatter import SetGlobalStyle, SetObjectStyle
 
@@ -30,9 +30,10 @@ from StyleFormatter import SetGlobalStyle, SetObjectStyle
 D0, DPLUS, LAMBDAC_TO_PKPI, LAMBDAC_TO_PK0S = 0, 1, 2, 3
 
 # colours
-RED = kRed+1
+RED = kRed + 1
 BLUE = kBlue + 1
-AZURE = kAzure+4
+AZURE = kAzure + 4
+Green = kGreen + 1
 
 # conversion
 GEV2MEV = 1000
@@ -63,7 +64,7 @@ def get_name_infile(particle):
 
     name_infile = ""
     if particle == D0:
-        name_infile = ""
+        name_infile = "../Results/D0/RawYieldPlotPaper.root"
     elif particle == DPLUS:
         name_infile = "/home/abigot/AnalysisNonPromptDplus/Run2pPb5Tev/4_Analysis/1_RawYieldExtraction/" \
             + "rawYield_Dplus_nonprompt_enhanced.root"
@@ -152,8 +153,8 @@ def draw_info(lat_label, particle):
         info = "#Lambda_{c}^{+}  #rightarrow pK^{0}_{S} and charge conj."
         fnonprompt = "#it{f}_{ non-prompt}^{ raw} = 0.549 #pm  0.138 (stat.) #pm 0.055 (syst.)"
 
-    lat_label.DrawLatex(0.18, 0.76, info)
-    lat_label.DrawLatex(0.18, 0.16, fnonprompt)
+    lat_label.DrawLatex(0.19, 0.76, info)
+    lat_label.DrawLatex(0.19, 0.16, fnonprompt)
 
 
 def save_canvas(canvas, particle, pt_mins, pt_maxs, i_pt):
@@ -192,7 +193,7 @@ def main(particle, i_pt, cfg, batch):
     - i_pt (int): pT bin number
     """
 
-    SetGlobalStyle(padleftmargin=0.14, padbottommargin=0.125, titleoffsety=1.3, titleoffsetx=1., maxdigits=3)
+    SetGlobalStyle(padleftmargin=0.14, padtopmargin=0.045, padbottommargin=0.125, titleoffsety=1.3, titleoffsetx=1., maxdigits=3)
 
     # import confiruables
     pt_mins = cfg["pPb5TeVFD"]["PtMin"]
@@ -207,7 +208,10 @@ def main(particle, i_pt, cfg, batch):
 
     hmean = file.Get("hRawYieldsMean")
     hsigma = file.Get("hRawYieldsSigma")
-    hsignal = file.Get("hRawYieldsSignal")
+    if particle == D0:
+        hsignal = file.Get("hRawYields")
+    else:
+        hsignal = file.Get("hRawYieldsSignal")
 
     name_hmass = f"hMass_{10*pt_mins[i_pt]:.0f}_{10*pt_maxs[i_pt]:.0f}"
     hmass = file.Get(name_hmass)
@@ -216,12 +220,20 @@ def main(particle, i_pt, cfg, batch):
     title_xaxis = get_title_xaxis(particle)
     width_bin = hmass.GetBinWidth(i_pt+1)
     bin_max = hmass.GetMaximumBin()
-    ymin, ymax = 50, 1.3*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
+    if particle == D0:
+        ymin, ymax = 0.01, 1.6*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
+    else:
+        ymin, ymax = 50, 1.3*(hmass.GetMaximum() + hmass.GetBinError(bin_max))
     title = f"{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}};{title_xaxis};" \
         f"Counts per {width_bin*GEV2MEV:.0f} MeV/#it{{c}}^{{2}}"
 
-    fit_tot = file.Get(f"fTot_{pt_mins[i_pt]:.0f}_{pt_maxs[i_pt]:.0f}")
-    fit_bkg = file.Get(f"fBkg_{pt_mins[i_pt]:.0f}_{pt_maxs[i_pt]:.0f}")
+    if particle == D0:
+        fit_tot = file.Get(f"fTot_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
+        fit_bkg = file.Get(f"fBkg_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
+        fit_refl = file.Get(f"fRefl_{pt_mins[i_pt]:.0f}.0_{pt_maxs[i_pt]:.0f}.0")
+    else:
+        fit_tot = file.Get(f"fTot_{pt_mins[i_pt]:.0f}_{pt_maxs[i_pt]:.0f}")
+        fit_bkg = file.Get(f"fBkg_{pt_mins[i_pt]:.0f}_{pt_maxs[i_pt]:.0f}")
 
     mean, err_mean = get_h_value_err(hmean, i_pt+1, True)
     sigma, _ = get_h_value_err(hsigma, i_pt+1, True)
@@ -247,13 +259,18 @@ def main(particle, i_pt, cfg, batch):
     str_sigma = f"#sigma = {sigma:.0f} MeV/#it{{c}}^{{2}}"
     str_sig = f'#it{{S}} = {signal:.0f} #pm {err_signal:.0f}'
 
-    legend = TLegend(0.62, 0.58, 0.85, 0.72)
+    if particle == D0:
+        legend = TLegend(0.62, 0.51, 0.85, 0.72)
+    else:
+        legend = TLegend(0.62, 0.58, 0.85, 0.72)
     legend.SetBorderSize(0)
     legend.SetFillStyle(0)
     legend.SetTextFont(43)
     legend.SetTextSize(SIZE_TEXT_LEGEND)
     legend.AddEntry(fit_tot, 'Total fit function', 'l')
     legend.AddEntry(fit_bkg, '#splitline{Combinatorial}{background}', 'l')
+    if particle == D0:
+        legend.AddEntry(fit_refl, 'K#minus#pi reflected', 'l')
 
     c = TCanvas("c", "", WIDTH, HEIGHT)
     frame = c.DrawFrame(mass_mins[i_pt], ymin, mass_maxs[i_pt], ymax, title)
@@ -262,10 +279,14 @@ def main(particle, i_pt, cfg, batch):
     SetObjectStyle(hmass, linewidth=3, linecolor=kBlack)
     SetObjectStyle(fit_tot, linewidth=3, linecolor=kBlue)
     SetObjectStyle(fit_bkg, linewidth=3, linecolor=kRed, linestyle=2)
+    if particle == D0:
+        SetObjectStyle(fit_refl, linewidth=3, linecolor=kGreen)
 
     hmass.Draw("same")
     fit_bkg.Draw("same")
     fit_tot.Draw("same")
+    if particle == D0:
+        fit_refl.Draw("same")
 
     lat_alice.DrawLatex(0.19, 0.89, 'ALICE')
     lat_label.SetTextSize(SIZE_TEXT_LAT_LABEL_FOR_COLL_SYSTEM)
@@ -273,7 +294,7 @@ def main(particle, i_pt, cfg, batch):
     lat_label.SetTextSize(SIZE_TEXT_LAT_LABEL)
     draw_info(lat_label, particle)
     lat_label.DrawLatex(0.19, 0.70, f'{pt_mins[i_pt]:.0f} < #it{{p}}_{{T}} < {pt_maxs[i_pt]:.0f} GeV/#it{{c}}')
-    lat_label.DrawLatex(0.65, 0.89, '-0.96 < #it{y}_{cms} < 0.04')
+    lat_label.DrawLatex(0.65, 0.89, '#font[122]{-}0.96 < #it{y}_{cms} < 0.04')
     lat_label.DrawLatex(0.19, 0.64, str_mu)
     lat_label.DrawLatex(0.19, 0.58, str_sigma)
     lat_label.DrawLatex(0.19, 0.52, str_sig)
@@ -299,4 +320,5 @@ if __name__ == "__main__":
         configuration = yaml.load(yml_cfg, yaml.FullLoader)
     print("Loading analysis configuration: Done!")
 
+    # main(particle=D0, i_pt=0, cfg=configuration, batch=args.batch)
     main(particle=DPLUS, i_pt=3, cfg=configuration, batch=args.batch)
