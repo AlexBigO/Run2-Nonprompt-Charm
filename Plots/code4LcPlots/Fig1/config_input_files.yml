@@ -1,0 +1,160 @@
+# glabal normalisations (to be used in all macros)
+BR: # 2022 D0 BRs
+    Dzero: 0.0628
+    Dplus: 0.0938
+    Ds: 0.0224
+BRunc: # 2022 D0 BRs
+    Dzero: 0.05
+    Dplus: 0.0016
+    Ds: 0.0008
+BRpred: # BRs used in the FONLL predictions (sigma x BR) from 2020 --> necessary to divide times same quantity to get sigma
+    Dzero: 0.03950  # to be checked if updated to 2022 pdg
+    Dplus: 0.0938
+    Ds: 0.0224
+# uncertainty on luminosity
+lumiunc: 0.037    #pPb
+#lumiunc: 0.021 # pp
+
+# files for figures
+nonprompt:
+    Dzero:
+        massfit: nonpromptD/invairantmass_D0.root
+        efficiency: nonpromptD/Efficiency_D0_p8.root
+        cutvardistr: nonpromptD/minchi2_D0_new.root
+        fnonprompt: nonpromptD/Xsec_fraction_D0.root
+        crosssection: ../CrossSectionSystematics_2.root #nonpromptD/NPD0_2017pp_p8.root to be checked
+        # crosssection: ../CrossSectionSystematics.root #nonpromptD/NPD0_2017pp_p8.root to be checked
+    Dplus:
+        massfit: nonpromptD/RawYieldsDplus_pp5TeV_FD_central.root
+        efficiency: nonpromptD/Eff_times_Acc_Dplus_pp5TeV_FD_central.root
+        cutvardistr: nonpromptD/FDfraction_Dplus.root
+        fnonprompt: nonpromptD/CrossSectionDplus_pp5TeV_FD_central.root
+        crosssection: nonpromptD/CrossSectionDplus_pp5TeV_FD_central.root
+    Ds:
+        massfit: nonpromptD/RawYieldDs_pp5TeV_FD_conservative.root
+        efficiency: nonpromptD/EffAcc_Ds_pp5TeV_FD_conservative.root
+        cutvardistr: nonpromptD/FDfraction_Ds.root
+        fnonprompt: nonpromptD/CrossSectionDs_pp5TeV_FD_conservative.root
+        crosssection: nonpromptD/CrossSectionDs_pp5TeV_FD_conservative.root
+        scores:
+            prompt: nonpromptD/Prompt_pT_2_4_ModelApplied.parquet.gzip
+            nonprompt: nonpromptD/FD_pT_2_4_ModelApplied.parquet.gzip
+            bkg: nonpromptD/ReducedBkg_pT_2_4_ModelApplied.parquet.gzip
+
+prompt:
+    Dzero:
+        massfit: null
+        crosssection: promptD/HFPtSpectrum_Dzero_LowTopolCombined_FinePt_mergeThr1_TOYydep.root
+    Dplus:
+        massfit: ../pKpi/RawYield_Lc2pKpi_data_cutset_4_8_outFD_pos10.root
+        crosssection: promptD/MLanalysis/HFPtSpectrum_Dplus_pp5TeV_pt0-36_MLmulticlass_FFee_BRpythia8.root
+    Ds:
+        massfit: promptD/MLanalysis/RawYieldsDs_pp5TeV_PromptEn.root
+        crosssection: promptD/MLanalysis/HFPtSpectrumDs_pp5TeV_PromptEn_final.root
+
+fpromptcomp:
+    Dplus:
+        theorydriven: promptD/MLanalysis/HFPtSpectrum_Dplus_pp5TeV_pt0-36_MLmulticlass_FFee_BRpythia8.root
+        datadriven: promptD/MLanalysis/CrossSection_PromptDplus_pp5TeV_ML_datadriven.root
+    Ds:
+        theorydriven: promptD/MLanalysis/HFPtSpectrumDs_pp5TeV_PromptEn_final.root
+        datadriven: promptD/MLanalysis/CrossSec_dataDriven_Ds_PromptEn_pt2_12.root
+
+ptintcross:
+    prompt:
+        Dzero: ptintcrosssec/promptD/Dzero-PtIntegr0-36_FONLLextrap_pub.root
+        Dplus: ptintcrosssec/promptD/Dplus-PtIntegr0-36.root
+        Ds: ptintcrosssec/promptD/Ds-PtIntegr1-24_FONLLextrap.root
+    nonprompt:
+        Dzero: ptintcrosssec/nonpromptD/NonPromptDzero_PtIntegr1-24_FONLLextrap.root
+        Dplus: ptintcrosssec/nonpromptD/NonPromptDplus_PtIntegr2-16_FONLLextrap.root
+        Ds: ptintcrosssec/nonpromptD/NonPromptDs_PtIntegr2-12_FONLLextrap.root
+    bbbar:
+        Dzero: ptintcrosssec/nonpromptD/CrossSection_bbbar_FromNonPromptDzero_FONLLextrap.root
+        Dplus: ptintcrosssec/nonpromptD/CrossSection_bbbar_FromNonPromptDplus_FONLLextrap.root
+        Ds: ptintcrosssec/nonpromptD/CrossSection_bbbar_FromNonPromptDs_FONLLextrap.root
+        average: ptintcrosssec/nonpromptD/CrossSection_bbbar_FromNonPromptDaverage_FONLLextrap.root
+
+ratios:
+    prompt: promptD/PromptD0DpDs_ratios_pp5TeV_ML.root
+    nonprompt: nonpromptD/NonPromptD0DpDs_ratios_pp5TeV_ML.root
+    nonpromptoverprompt: nonpromptD/D0DplusDs_NonPromptOverPrompt_ratios_pp5TeV.root
+    ptint:
+        prompt: ptintcrosssec/promptD/PromptD0DpDs_pTint_ratios_pp5TeV_ML.root
+        nonprompt: ptintcrosssec/nonpromptD/NonPromptD0DpDs_pTint_ratios_pp5TeV_ML.root
+
+models:
+    FONLL:
+        default: models/DmesonLcPredictions_502TeV_y05_FFee_BRpythia8_SepContr_PDG2020.root
+        bbbar:
+            62dot4GeV: models/FONLL-bbbar-y05-pp62dot4GeV_pt0-100.txt
+            200GeV: models/FONLL-bbbar-y05-pp200GeV_pt0-100.txt
+            500GeV: models/FONLL-bbbar-y05-pp500GeV_pt0-100.txt
+            900GeV: models/FONLL-bbbar-y05-pp900GeV_pt0-100.txt
+            1dot96TeV: models/FONLL-bbbar-y05-pp1dot96TeV_pt0-100.txt
+            2dot76TeV: models/FONLL-bbbar-y05-pp2dot76TeV_pt0-100.txt
+            5dot02TeV: models/FONLL-bbbar-y05-pp5dot02TeV_pt0-100.txt
+            5dot5TeV: models/FONLL-bbbar-y05-pp5dot5TeV_pt0-100.txt
+            7TeV: models/FONLL-bbbar-y05-pp7TeV_pt0-100.txt
+            8TeV: models/FONLL-bbbar-y05-pp8TeV_pt0-100.txt
+            13TeV: models/FONLL-bbbar-y05-pp13TeV_pt0-100.txt
+            14TeV: models/FONLL-bbbar-y05-pp14TeV_pt0-100.txt
+    GMVFNS:
+        prompt:
+            Dzero: models/gm-vfns/D0502_y-0505.dat
+            Dplus: models/gm-vfns/alice5d+-c-minmax2020.dat
+            Ds: models/gm-vfns/alice5ds-c-minmax2020.dat
+        old_prompt:
+            Dzero: models/gm-vfns/D0502_y-0505.dat
+            Dplus: models/gm-vfns/DP502_y-0505.dat
+            Ds: models/gm-vfns/DS502_y-0505.dat
+        nonprompt:
+            Dzero: models/gm-vfns/GMVFNS-nonPromptDzero-pp5-y05-2021.txt
+            Dzero2steps: models/gm-vfns/GMVFNS-nonPromptDzero-pp5-y05-2Steps-2021.txt
+            Dplus: models/gm-vfns/GMVFNS-nonPromptDplus-pp5-y05-2021.txt
+            Dplus2steps: models/gm-vfns/GMVFNS-nonPromptDplus-pp5-y05-2Steps-2021.txt
+            Ds: models/gm-vfns/GMVFNS-nonPromptDs-pp5-y05-2021.txt
+            Ds2steps: null
+    POWHEG:
+        prompt:
+            Dzero: models/powheg_pythia6/POWHEG-D0-pp5TeV-CT14NLO.root
+            Dplus: models/powheg_pythia6/POWHEG-DPlus-pp5TeV-CT14NLO.root
+            Ds: models/powheg_pythia6/POWHEG-Ds-pp5TeV-CT14NLO.root
+        nonprompt:
+            Dzero: ''
+            Dplus: ''
+            Ds: ''
+    PYTHIA8:
+        FF:
+            charm: models/CharmHadrons_pp5dot02TeV_Pythia8_SoftQCD_Monash.txt
+            beauty: models/BeautyHadrons_pp5dot02TeV_Pythia8_SoftQCD_Monash.txt
+
+# files for extrapolations
+extrap:
+    ptint:
+        default: models/DmesonLcPredictions_502TeV_y05_FFee_BRpythia8_SepContr_PDG2020.root
+        alternative:
+        - models/D0DplusDstarPredictions_502TeV_y05_noYShift_all_191017_BDShapeCorrected.root # test different pt-shape (EvtGen decayer)
+        combination: none # possibilities: none, envelope, correlated, uncorrelated
+    bbbar:
+        numerator: models/FONLL-bbbar-y05-pp5dot02TeV_pt0-100.txt
+        denominator:
+            default: models/DmesonLcPredictions_502TeV_y05_FFee_BRpythia8_SepContr_PDG2020.root
+            alternative:
+            - models/DmesonLcPredictions_502TeV_y05_FFppbar_BRpythia8_SepContr_PDG2020.root # test different FF            
+            - models/DmesonLcPredictions_502TeV_y05_FFee_BRPDG_SepContr_PDG2020.root # test different BR            
+        combination: uncorrelated # possibilities: none, envelope, correlated, uncorrelated
+        rapiditycorr:
+            pythia:
+                central: ptintcrosssec/nonpromptD/BeautyHadrons_pp5dot02TeV_Pythia8_HardQCD_Monash_corrFactor_rapidity.root
+                uncertainty: 0.01
+            powheg:
+                apply: false # put false for Jpsi crew
+                central: ptintcrosssec/nonpromptD/pwgevents_muR_1_muF_1_5dot02TeV_CTEQ66_corrFactor_rapidity_POWHEG.root
+                uncertainty: 0.01
+    fragfrac:
+        default: models/DmesonLcPredictions_502TeV_y05_FFee_BRpythia8_SepContr_PDG2020.root
+        alternative:
+        - models/DmesonLcPredictions_502TeV_y05_FFppbar_BRpythia8_SepContr_PDG2020.root # test different FF            
+        - models/DmesonLcPredictions_502TeV_y05_FFee_BRPDG_SepContr_PDG2020.root # test different BR            
+        combination: uncorrelated # possibilities: none, envelope, correlated, uncorrelated
