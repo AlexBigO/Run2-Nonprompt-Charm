@@ -121,7 +121,7 @@ void DrawDplusD0RatioPPVsPPb() {
   TH1D *hrefPrompt =
       new TH1D("hrefPrompt", "hrefPrompt", nptlimsExtra, ptlimsExtral);
   hrefPrompt->SetTitle("");
-  hrefPrompt->GetYaxis()->SetTitle("Non-prompt D^{+}/D^{0}");
+  hrefPrompt->GetYaxis()->SetTitle("Non-prompt D^{+}/ non-prompt D^{0}");
   hrefPrompt->GetXaxis()->SetTitle("#it{p}_{T} (GeV/#it{c})");
   hrefPrompt->SetMinimum(0.081);
   hrefPrompt->SetMaximum(1.09);
