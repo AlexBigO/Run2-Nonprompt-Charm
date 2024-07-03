@@ -342,15 +342,15 @@ void DrawDplusD0RatioPPVsPPb() {
   promptRpPb->SetStats(0);
   promptRpPb->SetLineColor(kRed + 1);
   promptRpPb->SetMarkerColor(kRed + 1);
-  promptRpPb->SetMarkerStyle(21);
-  promptRpPb->SetMarkerSize(1.2);
+  promptRpPb->SetMarkerStyle(24);
+  promptRpPb->SetMarkerSize(1.3);
 
   SetStyleHisto(RpPbFDD0);
   RpPbFDD0->SetStats(0);
   RpPbFDD0->SetLineColor(kAzure + 2);
   RpPbFDD0->SetMarkerColor(kAzure + 2);
-  RpPbFDD0->SetMarkerStyle(20);
-  RpPbFDD0->SetMarkerSize(1.2);
+  RpPbFDD0->SetMarkerStyle(21);
+  RpPbFDD0->SetMarkerSize(1.3);
 
   TLatex info;
   info.SetNDC();
@@ -397,7 +397,7 @@ void DrawDplusD0RatioPPVsPPb() {
   inforef.SetNDC();
   inforef.SetTextFont(43);
   inforef.SetTextSize(22);
-  inforef.DrawLatex(0.66, 0.8, "JHEP 05 (2021) 220");
+  // inforef.DrawLatex(0.66, 0.8, "JHEP 05 (2021) 220");
 
   // for (int i = 0; i < 11; i++) {
   //   //    cout << "rel stat unc pp :" <<

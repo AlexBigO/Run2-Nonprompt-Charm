@@ -310,7 +310,7 @@ void DrawDplusD0Ratio() {
   //    realerr * hCroSecpPb->GetBinContent(iPt+1));
   //  }
   //
-  //  for(int iPt = 0; iPt < nPtBins; iPt++) {
+  //  for(int iPt = 0; iPt < nPtBins; iPt++) {Marker
   //    double realerr = TMath::Sqrt((hCroSecppclone->GetBinError(iPt+1) /
   //    hCroSecppclone->GetBinContent(iPt+1)) *
   //    (hCroSecppclone->GetBinError(iPt+1) /
@@ -344,14 +344,14 @@ void DrawDplusD0Ratio() {
   promptRpPb->SetStats(0);
   promptRpPb->SetLineColor(kRed + 1);
   promptRpPb->SetMarkerColor(kRed + 1);
-  promptRpPb->SetMarkerStyle(21);
+  promptRpPb->SetMarkerStyle(24);
   promptRpPb->SetMarkerSize(1.2);
 
   SetStyleHisto(RpPbFDD0);
   RpPbFDD0->SetStats(0);
   RpPbFDD0->SetLineColor(kAzure + 2);
   RpPbFDD0->SetMarkerColor(kAzure + 2);
-  RpPbFDD0->SetMarkerStyle(20);
+  RpPbFDD0->SetMarkerStyle(21);
   RpPbFDD0->SetMarkerSize(1.2);
 
   TLatex info;
@@ -400,7 +400,7 @@ void DrawDplusD0Ratio() {
   inforef.SetNDC();
   inforef.SetTextFont(43);
   inforef.SetTextSize(22);
-  inforef.DrawLatex(0.66, 0.63, "JHEP 12 (2019) 092");
+  // inforef.DrawLatex(0.66, 0.63, "JHEP 12 (2019) 092");
 
   // for (int i = 0; i < 11; i++) {
   //   //    cout << "rel stat unc pp :" <<
