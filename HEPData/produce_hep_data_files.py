@@ -61,7 +61,7 @@ def make_table(cfg):
                     values=data_stat["y"])
     data.add_qualifier("REACTION", cfg["qualifier"]["reaction"])
     data.add_qualifier("SQRT(S)/NUCLEON", cfg["qualifier"]["energy"], "GEV")
-    data.add_qualifier("YRAP", f"{cfg['qualifier']['rapidity']} TO {cfg['qualifier']['rapidity'][1]}")
+    data.add_qualifier("YRAP", f"{cfg['qualifier']['rapidity'][0]} TO {cfg['qualifier']['rapidity'][1]}")
 
     # statistical uncertainties
     data_stat_unc = Uncertainty("stat", is_symmetric=True)
@@ -113,11 +113,11 @@ def main(cfg_input):
 
     # create Submission instance
     submission = Submission()
+    submission.read_abstract(cfg_input["abstract_file"])
 
     print("Producing HEP data: ...", end="\r")
     for name_table in name_tables:
-        table = make_table(cfg_input[name_table])
-        submission.add_table(table)
+        submission.add_table(make_table(cfg_input[name_table]))
 
     # produce output files
     submission.create_files("./test_submission")
@@ -135,4 +135,3 @@ if __name__ == "__main__":
     print("Loading configuration: Done!")
 
     main(configuration)
-

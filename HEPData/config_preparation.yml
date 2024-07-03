@@ -1,10 +1,11 @@
 ---
+abstract_file: abstract.txt
 # global normalisations (to be used in all macros)
 BR: # 2020 BRs
     Dzero: &BR_Dzero 0.03950
     Dplus: &BR_Dplus 0.0938
     Lc: &BR_Lc 1. # put combined value
-    DplusOverDzero: &BR_DplusOverDzero 1.
+    DplusOverDzero: &BR_DplusOverDzero 1.0
 BRunc: # 2020 BRs
     Dzero: &BRunc_Dzero 0.00031
     Dplus: &BRunc_Dplus 0.0016
@@ -25,7 +26,7 @@ Table1:
     graph: gCorrYieldSystTot # FIXME
     symbol: blue filled square
     position_panel: top left
-  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
     of non-prompt $\mathrm{D}^0$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
@@ -34,15 +35,15 @@ Table1:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
-      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
       units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
   qualifier:
     reaction: *reaction_Dzero
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Dzero
@@ -59,7 +60,7 @@ Table2:
     graph: gCorrYieldSystTot
     symbol: blue filled square
     position_panel: top right
-  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
     of non-prompt $\mathrm{D}^+$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
@@ -68,15 +69,15 @@ Table2:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
-      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
       units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
   qualifier:
     reaction: *reaction_Dplus
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Dplus
@@ -93,7 +94,7 @@ Table3:
     graph: gCorrYieldSystTot # FIXME
     symbol: blue filled square
     position_panel: bottom
-  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
     of non-prompt $\Lambda_{c}^{+}$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
@@ -102,15 +103,15 @@ Table3:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
-      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
       units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
   qualifier:
     reaction: *reaction_Lc
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Lc
@@ -136,15 +137,15 @@ Table4:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
       name: $R_{\mathrm{pPb}}$
       units: null
   qualifier:
     reaction: *reaction_Dzero_Dplus
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
@@ -168,15 +169,15 @@ Table5:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
       name: $R_{\mathrm{pPb}}$
       units: null
   qualifier:
     reaction: *reaction_Lc
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
@@ -200,7 +201,7 @@ Table6:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $y_{\mathrm{cms}}
+      name: $y_{\mathrm{{cms}}}$
       units: null
     data:
       name: $R_{\mathrm{pPb}}$
@@ -208,7 +209,7 @@ Table6:
   qualifier:
     reaction: *reaction_Dzero
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
@@ -232,7 +233,7 @@ Table7:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $y_{\mathrm{cms}}
+      name: $y_\mathrm{cms}$
       units: null
     data:
       name: $R_{\mathrm{pPb}}$
@@ -240,12 +241,12 @@ Table7:
   qualifier:
     reaction: *reaction_Dplus
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
 
-# Figure 7, left, D+/D0
+# Figure 7, left, non-prompt D+/D0
 Table8:
   table_number: 8
   figure_number_in_article: 7
@@ -264,15 +265,15 @@ Table8:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
       name: Non-prompt $\mathrm{D}^+$ / non-prompt $\mathrm{D}^0$
       units: null
   qualifier:
     reaction: *reaction_Dzero_Dplus
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br:
       value: *BR_DplusOverDzero
@@ -298,20 +299,20 @@ Table9:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $p_\mathrm{T}$
-      units: $\mathrm{GeV}/c$
+      name: $p_\mathrm{{T}}$
+      units: $\mathrm{{GeV}}/c$
     data:
       name: Non-prompt $\Lambda_{c}^{+} / \mathrm{D}^0$
       units: null
   qualifier:
     reaction: *reaction_Lc_Dzero
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
 
-# Figure 6, bottom, pT-integrated RpPb of non-prompt Lc/D0
+# Figure 8, bottom, pT-integrated RpPb of non-prompt Lc/D0
 Table10:
   table_number: 10
   figure_number_in_article: 8
@@ -321,7 +322,7 @@ Table10:
     graph: gCorrYieldSystTot # FIXME
     symbol: blue filled circle
     position_panel: bottom
-  description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < $p_\mathrm{{T}}$ < 24$ $\mathrm{GeV}/c$)
+  description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < $p_\mathrm{{T}}$ < 24$ $\mathrm{{GeV}}/c$)
     $R_{\mathrm{pPb}}$ of non-prompt $\Lambda_{c}^{+}$ and non-prompt $\mathrm{D}^0
     in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
@@ -331,7 +332,7 @@ Table10:
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
-      name: $y_{\mathrm{cms}}
+      name: $y_{\mathrm{{cms}}}$
       units: null
     data:
       name: $R_{\mathrm{pPb}}$
@@ -339,7 +340,7 @@ Table10:
   qualifier:
     reaction: *reaction_Lc_Dzero
     energy: *cmenergies
-    rapidity: [-0.96, 0.04]
+    rapidity: [-0.96, -0.04]
   systematics:
     br: null
     lumi: null
