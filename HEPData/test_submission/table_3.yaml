@@ -13,126 +13,54 @@ dependent_variables:
   values:
   - errors:
     - label: stat
-      symerror: 95.268
+      symerror: 180.71
     - label: sys
-      symerror: 31.331
+      symerror: 76.95
     - label: sys, branching ratio unc. (%)
       symerror: 5.0
     - label: sys, luminosity unc. (%)
       symerror: 3.7
-    value: 329.0
+    value: 577.82
   - errors:
     - label: stat
-      symerror: 29.162
+      symerror: 11.554
     - label: sys
-      symerror: 11.335
+      symerror: 7.008
     - label: sys, branching ratio unc. (%)
       symerror: 5.0
     - label: sys, luminosity unc. (%)
       symerror: 3.7
-    value: 162.45
+    value: 54.46
   - errors:
     - label: stat
-      symerror: 10.953
+      symerror: 1.7884
     - label: sys
-      symerror: 5.3346
+      symerror: 0.873
     - label: sys, branching ratio unc. (%)
       symerror: 5.0
     - label: sys, luminosity unc. (%)
       symerror: 3.7
-    value: 88.07
+    value: 6.5676
   - errors:
     - label: stat
-      symerror: 5.9645
+      symerror: 0.26929
     - label: sys
-      symerror: 3.2688
+      symerror: 0.0877
     - label: sys, branching ratio unc. (%)
       symerror: 5.0
     - label: sys, luminosity unc. (%)
       symerror: 3.7
-    value: 54.525
-  - errors:
-    - label: stat
-      symerror: 3.7187
-    - label: sys
-      symerror: 1.7897
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 29.853
-  - errors:
-    - label: stat
-      symerror: 2.5782
-    - label: sys
-      symerror: 1.1751
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 19.602
-  - errors:
-    - label: stat
-      symerror: 1.1581
-    - label: sys
-      symerror: 0.64656
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 10.823
-  - errors:
-    - label: stat
-      symerror: 0.71869
-    - label: sys
-      symerror: 0.38234
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 4.9776
-  - errors:
-    - label: stat
-      symerror: 0.29668
-    - label: sys
-      symerror: 0.15632
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 2.0351
-  - errors:
-    - label: stat
-      symerror: 0.089495
-    - label: sys
-      symerror: 0.033897
-    - label: sys, branching ratio unc. (%)
-      symerror: 5.0
-    - label: sys, luminosity unc. (%)
-      symerror: 3.7
-    value: 0.3232
+    value: 0.36588
 independent_variables:
 - header:
     name: $p_\mathrm{T}$
     units: $\mathrm{GeV}/c$
   values:
-  - high: 3.0
-    low: 2.0
   - high: 4.0
-    low: 3.0
-  - high: 5.0
-    low: 4.0
-  - high: 6.0
-    low: 5.0
-  - high: 7.0
-    low: 6.0
+    low: 2.0
   - high: 8.0
-    low: 7.0
-  - high: 10.0
-    low: 8.0
+    low: 4.0
   - high: 12.0
-    low: 10.0
-  - high: 16.0
-    low: 12.0
+    low: 8.0
   - high: 24.0
-    low: 16.0
+    low: 12.0
