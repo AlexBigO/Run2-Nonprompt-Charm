@@ -88,9 +88,9 @@ Table3:
   table_number: 3
   figure_number_in_article: 4
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/Lc/CrossSection_Np_Lc.root # FIXME
+    hist: hAverageCorrYield # FIXME
+    graph: gAverageCorrYieldSystTot # FIXME
     symbol: blue filled square
     position_panel: bottom
   description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
@@ -154,9 +154,9 @@ Table5:
   table_number: 5
   figure_number_in_article: 5
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/Lc/RpPbLcFD.root # FIXME
+    hist: RpPbFDLc # FIXME
+    graph: gRpPbFDLcSystematics # FIXME
     symbol: blue filled square
     position_panel: right
   description: $p_\mathrm{{T}}$-differential $R_{\mathrm{pPb}}$
@@ -284,9 +284,9 @@ Table9:
   table_number: 9
   figure_number_in_article: 8
   input:
-    file: ../Results/Dplus/Ratio_Dplus_D0_FD_pPb.root # FIXME
-    hist: hRatio # FIXME
-    graph: gRatioSystTot # FIXME
+    file: ../Results/Lc/LcOverD0.root # FIXME
+    hist: hLcOverD0 # FIXME
+    graph: gFDLcOverD0Systematics # FIXME
     symbol: blue filled square
     position_panel: top left
   description: non-prompt $\Lambda_{c}^{+} / \mathrm{D}^0$ yield ratio
@@ -311,14 +311,14 @@ Table9:
     br: null
     lumi: null
 
-# Figure 6, bottom, pT-integrated RpPb of non-prompt Lc/D0
+# Figure 8, bottom, pT-integrated RpPb of non-prompt Lc/D0
 Table10:
   table_number: 10
   figure_number_in_article: 8
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/Lc/RpPbDoubleRatio.root # FIXME
+    hist: h1pTIntRpPbDoubleRatio # FIXME
+    graph: Graph # FIXME
     symbol: blue filled circle
     position_panel: bottom
   description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < $p_\mathrm{{T}}$ < 24$ $\mathrm{GeV}/c$)
