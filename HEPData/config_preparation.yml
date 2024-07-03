@@ -1,0 +1,47 @@
+---
+# global normalisations (to be used in all macros)
+BR: # 2020 BRs
+    Dzero: 0.03950
+    Dplus: &BR_Dplus 0.0938
+BRunc: # 2020 BRs
+    Dzero: 0.00031
+    Dplus: &BRunc_Dplus 0.0016
+
+LumiUnc: &LumiUnc 0.037
+
+# Figure 4, top right, pT-differential production cross section of non-prompt D+
+Table1:
+  table_number: 1
+  figure_number_in_article: 4
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root
+    hist: hCorrYield
+    graph: gCorrYieldSystTot
+    symbol: blue filled square
+    position_panel: top right
+  description: $p_\mathrm{{T}}$-differential cross sections $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+    of non-prompt $\mathrm{D}^0$, $\mathrm{D}^+$ and $\Lambda_{c}$
+    in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: SIG
+    reactions: &reactions "PPB --> hb --> D+ + X"
+    cmenergies: &cmenergies 5020.0
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+  qualifier:
+    reaction: *reactions
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: # null if not wanted
+      value: *BR_Dplus
+      unc: *BRunc_Dplus
+    lumi: *LumiUnc # null if not wanted
+  
+
