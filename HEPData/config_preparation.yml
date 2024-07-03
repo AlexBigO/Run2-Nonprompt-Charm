@@ -2,17 +2,22 @@
 abstract_file: abstract.txt
 # global normalisations (to be used in all macros)
 BR: # 2020 BRs
-    Dzero: &BR_Dzero 0.03950
-    Dplus: &BR_Dplus 0.0938
-    Lc: &BR_Lc 1. # put combined value
-    DplusOverDzero: &BR_DplusOverDzero 1.0
+  Dzero: &BR_Dzero 0.03950
+  Dplus: &BR_Dplus 0.0938
+  Lc: &BR_Lc 1. # put combined value
+  DplusOverDzero: &BR_DplusOverDzero 1.0
 BRunc: # 2020 BRs
-    Dzero: &BRunc_Dzero 0.00031
-    Dplus: &BRunc_Dplus 0.0016
-    Lc: &BRunc_Lc 0.05 # put combined unc
-    DplusOverDzero: &BRunc_DplusOverDzero 0.019
+  Dzero: &BRunc_Dzero 0.00031
+  Dplus: &BRunc_Dplus 0.0016
+  Lc: &BRunc_Lc 0.05 # put combined unc
+  DplusOverDzero: &BRunc_DplusOverDzero 0.019
 
 LumiUnc: &LumiUnc 0.037
+
+reactions:
+  Dzero: &reaction_Dzero P PB --> hb --> D0 X
+  Dplus: &reaction_Dplus P PB --> hb --> D X
+  Lc: &reaction_Lc P PB --> hb --> Lc X
 
 cmenergies: &cmenergies 5020.0
 
@@ -31,7 +36,8 @@ Table1:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: DSIG/DPT/DY
-    reactions: &reaction_Dzero "PPB --> hb --> D0 + X"
+    phrases: ["non-prompt", "D0 production"]
+    reactions: [ *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
@@ -39,9 +45,9 @@ Table1:
       units: $\mathrm{{GeV}}/c$
     data:
       name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
-      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+      units: $\mu\mathrm{b}~\mathrm{GeV}^{-1}~c$
   qualifier:
-    reaction: *reaction_Dzero
+    reaction: [ *reaction_Dzero ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -65,7 +71,8 @@ Table2:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: DSIG/DPT/DY
-    reactions: &reaction_Dplus "PPB --> hb --> D+ + X"
+    phrases: ["non-prompt", "D production"]
+    reactions: [ *reaction_Dplus ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
@@ -73,9 +80,9 @@ Table2:
       units: $\mathrm{{GeV}}/c$
     data:
       name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
-      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+      units: $\mu\mathrm{b}~\mathrm{GeV}^{-1}~c$
   qualifier:
-    reaction: *reaction_Dplus
+    reaction: [ *reaction_Dplus ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -89,9 +96,9 @@ Table3:
   table_number: 3
   figure_number_in_article: 4
   input:
-    file: ../Results/Lc/CrossSection_Np_Lc.root # FIXME
-    hist: hAverageCorrYield # FIXME
-    graph: gAverageCorrYieldSystTot # FIXME
+    file: ../Results/Lc/CrossSection_Np_Lc.root
+    hist: hAverageCorrYield
+    graph: gAverageCorrYieldSystTot
     symbol: blue filled square
     position_panel: bottom
   description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
@@ -99,7 +106,8 @@ Table3:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: DSIG/DPT/DY
-    reactions: &reaction_Lc "PPB --> hb --> Lc+ + X"
+    phrases: ["non-prompt", "Lc production"]
+    reactions: [ *reaction_Lc ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
@@ -107,9 +115,9 @@ Table3:
       units: $\mathrm{{GeV}}/c$
     data:
       name: $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
-      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+      units: $\mu\mathrm{b}~\mathrm{GeV}^{-1}~c$
   qualifier:
-    reaction: *reaction_Lc
+    reaction: [ *reaction_Lc ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -133,17 +141,18 @@ Table4:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: RPA
-    reactions: &reaction_Dzero_Dplus "PPB --> hb --> D0/D+ + X"
+    phrases: null
+    reactions: [ *reaction_Dzero, *reaction_Dplus ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $p_\mathrm{{T}}$
       units: $\mathrm{{GeV}}/c$
     data:
-      name: $R_{\mathrm{pPb}}$
+      name: Average non-prompt $\mathrm{D}^0$ and $\mathrm{D}^+$ $R_{\mathrm{pPb}}$ nuclear modification factor
       units: null
   qualifier:
-    reaction: *reaction_Dzero_Dplus
+    reaction: [ *reaction_Dzero, *reaction_Dplus ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -155,9 +164,9 @@ Table5:
   table_number: 5
   figure_number_in_article: 5
   input:
-    file: ../Results/Lc/RpPbLcFD.root # FIXME
-    hist: RpPbFDLc # FIXME
-    graph: gRpPbFDLcSystematics # FIXME
+    file: ../Results/Lc/RpPbLcFD.root
+    hist: RpPbFDLc
+    graph: gRpPbFDLcSystematics
     symbol: blue filled square
     position_panel: right
   description: $p_\mathrm{{T}}$-differential $R_{\mathrm{pPb}}$
@@ -165,7 +174,8 @@ Table5:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: RPA
-    reactions: "PPB --> hb --> Lc+ + X"
+    phrases: null
+    reactions: [ *reaction_Lc ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
@@ -175,7 +185,7 @@ Table5:
       name: $R_{\mathrm{pPb}}$
       units: null
   qualifier:
-    reaction: *reaction_Lc
+    reaction: [ *reaction_Lc ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -197,17 +207,18 @@ Table6:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: RPA
-    reactions: *reaction_Dzero
+    phrases: null
+    reactions: [ *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $y_{\mathrm{{cms}}}$
       units: null
     data:
-      name: $R_{\mathrm{pPb}}$
-      units: " "
+      name: Non-prompt $\mathrm{D}^0$ $R_{\mathrm{pPb}}$ nuclear modification factor
+      units: null
   qualifier:
-    reaction: *reaction_Dzero
+    reaction: [ *reaction_Dzero ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -229,17 +240,18 @@ Table7:
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: RPA
-    reactions: *reaction_Dplus
+    phrases: null
+    reactions: [ *reaction_Dplus ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $y_\mathrm{cms}$
       units: null
     data:
-      name: $R_{\mathrm{pPb}}$
-      units: " "
+      name: Non-prompt $\mathrm{D}^+$ $R_{\mathrm{pPb}}$ nuclear modification factor
+      units: null
   qualifier:
-    reaction: *reaction_Dplus
+    reaction: [ *reaction_Dplus ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -260,18 +272,19 @@ Table8:
     in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
-    observables: D+/D0
-    reactions: *reaction_Dzero_Dplus
+    observables: D/D0
+    phrases: ["non-prompt", "yield ratio"]
+    reactions: [ *reaction_Dzero, *reaction_Dplus ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $p_\mathrm{{T}}$
       units: $\mathrm{{GeV}}/c$
     data:
-      name: Non-prompt $\mathrm{D}^+$ / non-prompt $\mathrm{D}^0$
+      name: Non-prompt $\mathrm{D}^+$ / non-prompt $\mathrm{D}^0$ yield ratio
       units: null
   qualifier:
-    reaction: *reaction_Dzero_Dplus
+    reaction: [ *reaction_Dzero, *reaction_Dplus ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -294,18 +307,19 @@ Table9:
     in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
-    observables: Lc+/D0
-    reactions: &reaction_Lc_Dzero "PPB --> hb --> Lc+/D0 + X"
+    observables: Lc/D0
+    phrases: ["non-prompt", "baryon-to-meson ratio"]
+    reactions: [ *reaction_Lc, *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $p_\mathrm{{T}}$
       units: $\mathrm{{GeV}}/c$
     data:
-      name: Non-prompt $\Lambda_{c}^{+} / \mathrm{D}^0$
+      name: Non-prompt $\Lambda_{c}^{+}$ / non-prompt $\mathrm{D}^0$ baryon-to-meson ratio
       units: null
   qualifier:
-    reaction: *reaction_Lc_Dzero
+    reaction: [ *reaction_Lc, *reaction_Dzero ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:
@@ -322,23 +336,24 @@ Table10:
     graph: Graph # FIXME
     symbol: blue filled circle
     position_panel: bottom
-  description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < $p_\mathrm{{T}}$ < 24$ $\mathrm{{GeV}}/c$)
-    $R_{\mathrm{pPb}}$ of non-prompt $\Lambda_{c}^{+}$ and non-prompt $\mathrm{D}^0
+  description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < p_\mathrm{{T}} < 24$ $\mathrm{{GeV}}/c$)
+    $R_{\mathrm{pPb}}$ of non-prompt $\Lambda_{c}^{+}$ and non-prompt $\mathrm{D}^0$
     in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
     observables: RPA/RPA
-    reactions: *reaction_Lc_Dzero
+    phrases: ["non-prompt", "baryon-to-meson ratio"]
+    reactions: [ *reaction_Lc, *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $y_{\mathrm{{cms}}}$
       units: null
     data:
-      name: $R_{\mathrm{pPb}}$
-      units: " "
+      name: Non-prompt $\Lambda_{c}^{+}$ $R_{\mathrm{pPb}}$ nuclear modification factor
+      units: null
   qualifier:
-    reaction: *reaction_Lc_Dzero
+    reaction: [ *reaction_Lc, *reaction_Dzero ]
     energy: *cmenergies
     rapidity: [-0.96, -0.04]
   systematics:

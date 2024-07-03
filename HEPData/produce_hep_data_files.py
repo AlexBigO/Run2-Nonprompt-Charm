@@ -46,7 +46,9 @@ def make_table(cfg):
     table.location = f"Data from Figure {figure_number_in_article}, {position_panel} panel ({symbol})"
     table.description = cfg["description"]
     table.keywords["observables"] = [cfg["keywords"]["observables"]]
-    table.keywords["reactions"] = [cfg["keywords"]["reactions"]]
+    if cfg["keywords"]["phrases"] is not None:
+        table.keywords["phrases"] = cfg["keywords"]["phrases"]
+    table.keywords["reactions"] = cfg["keywords"]["reactions"]
     table.keywords["cmenergies"] = [cfg["keywords"]["cmenergies"]]
 
     x_variable = Variable(cfg["variables"]["x_axis"]["name"],
@@ -59,7 +61,8 @@ def make_table(cfg):
                     is_binned=False,
                     units=cfg["variables"]["data"]["units"],
                     values=data_stat["y"])
-    data.add_qualifier("REACTION", cfg["qualifier"]["reaction"])
+    for reaction in cfg["qualifier"]["reaction"]:
+        data.add_qualifier("REACTION", reaction)
     data.add_qualifier("SQRT(S)/NUCLEON", cfg["qualifier"]["energy"], "GEV")
     data.add_qualifier("YRAP", f"{cfg['qualifier']['rapidity'][0]} TO {cfg['qualifier']['rapidity'][1]}")
 
