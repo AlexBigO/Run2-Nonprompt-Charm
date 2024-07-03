@@ -1,32 +1,37 @@
 ---
 # global normalisations (to be used in all macros)
 BR: # 2020 BRs
-    Dzero: 0.03950
+    Dzero: &BR_Dzero 0.03950
     Dplus: &BR_Dplus 0.0938
+    Lc: &BR_Lc 1. # put combined value
+    DplusOverDzero: &BR_DplusOverDzero 1.
 BRunc: # 2020 BRs
-    Dzero: 0.00031
+    Dzero: &BRunc_Dzero 0.00031
     Dplus: &BRunc_Dplus 0.0016
+    Lc: &BRunc_Lc 0.05 # put combined unc
+    DplusOverDzero: &BRunc_DplusOverDzero 0.019
 
 LumiUnc: &LumiUnc 0.037
 
-# Figure 4, top right, pT-differential production cross section of non-prompt D+
+cmenergies: &cmenergies 5020.0
+
+# Figure 4, top right, pT-differential production cross section of non-prompt D0
 Table1:
   table_number: 1
   figure_number_in_article: 4
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root
-    hist: hCorrYield
-    graph: gCorrYieldSystTot
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
     symbol: blue filled square
-    position_panel: top right
-  description: $p_\mathrm{{T}}$-differential cross sections $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
-    of non-prompt $\mathrm{D}^0$, $\mathrm{D}^+$ and $\Lambda_{c}$
-    in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    position_panel: top left
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+    of non-prompt $\mathrm{D}^0$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
     in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
   keywords:
-    observables: SIG
-    reactions: &reactions "PPB --> hb --> D+ + X"
-    cmenergies: &cmenergies 5020.0
+    observables: DSIG/DPT/DY
+    reactions: &reaction_Dzero "PPB --> hb --> D0 + X"
+    cmenergies: *cmenergies
   variables:
     x_axis: # transverse momentum
       name: $p_\mathrm{T}$
@@ -35,7 +40,41 @@ Table1:
       name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
       units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
   qualifier:
-    reaction: *reactions
+    reaction: *reaction_Dzero
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: # null if not wanted
+      value: *BR_Dzero
+      unc: *BRunc_Dzero
+    lumi: *LumiUnc # null if not wanted
+
+# Figure 4, top right, pT-differential production cross section of non-prompt D+
+Table2:
+  table_number: 2
+  figure_number_in_article: 4
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root
+    hist: hCorrYield
+    graph: gCorrYieldSystTot
+    symbol: blue filled square
+    position_panel: top right
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+    of non-prompt $\mathrm{D}^+$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: DSIG/DPT/DY
+    reactions: &reaction_Dplus "PPB --> hb --> D+ + X"
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+  qualifier:
+    reaction: *reaction_Dplus
     energy: *cmenergies
     rapidity: [-0.96, 0.04]
   systematics:
@@ -43,5 +82,264 @@ Table1:
       value: *BR_Dplus
       unc: *BRunc_Dplus
     lumi: *LumiUnc # null if not wanted
-  
 
+# Figure 4, bottom, pT-differential production cross section of non-prompt Lambdac+
+Table3:
+  table_number: 3
+  figure_number_in_article: 4
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: blue filled square
+    position_panel: bottom
+  description: $p_\mathrm{{T}}$-differential cross section $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+    of non-prompt $\Lambda_{c}^{+}$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: DSIG/DPT/DY
+    reactions: &reaction_Lc "PPB --> hb --> Lc+ + X"
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: $\mathrm{d}\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
+      units: $\mu\mathrm{b}\mathrm{GeV}^{-1}~c$
+  qualifier:
+    reaction: *reaction_Lc
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: # null if not wanted
+      value: *BR_Lc
+      unc: *BRunc_Lc
+    lumi: *LumiUnc # null if not wanted
+  
+# Figure 5, left, average pT-differential RpPb D0, D+
+Table4:
+  table_number: 4
+  figure_number_in_article: 5
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: blue filled square
+    position_panel: left
+  description: average $p_\mathrm{{T}}$-differential $R_{\mathrm{pPb}}$
+    of non-prompt $\mathrm{D}^0$ and $\mathrm{D}^+$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: RPA
+    reactions: &reaction_Dzero_Dplus "PPB --> hb --> D0/D+ + X"
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: $R_{\mathrm{pPb}}$
+      units: null
+  qualifier:
+    reaction: *reaction_Dzero_Dplus
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
+
+# Figure 5, right, pT-differential RpPb Lc+
+Table5:
+  table_number: 5
+  figure_number_in_article: 5
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: blue filled square
+    position_panel: right
+  description: $p_\mathrm{{T}}$-differential $R_{\mathrm{pPb}}$
+    of non-prompt $\Lambda_{c}^{+}$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: RPA
+    reactions: "PPB --> hb --> Lc+ + X"
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: $R_{\mathrm{pPb}}$
+      units: null
+  qualifier:
+    reaction: *reaction_Lc
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
+
+# Figure 6, left, pT-integrated RpPb D0
+Table6:
+  table_number: 6
+  figure_number_in_article: 6
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: black filled square
+    position_panel: left
+  description: $p_\mathrm{{T}}$-integrated $R_{\mathrm{pPb}}$
+    of non-prompt $\mathrm{D}^0$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: RPA
+    reactions: *reaction_Dzero
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $y_{\mathrm{cms}}
+      units: null
+    data:
+      name: $R_{\mathrm{pPb}}$
+      units: " "
+  qualifier:
+    reaction: *reaction_Dzero
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
+
+# Figure 6, left, pT-integrated RpPb D+
+Table7:
+  table_number: 7
+  figure_number_in_article: 6
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: brown filled circle
+    position_panel: left
+  description: $p_\mathrm{{T}}$-integrated $R_{\mathrm{pPb}}$
+    of non-prompt $\mathrm{D}^+$ in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: RPA
+    reactions: *reaction_Dplus
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $y_{\mathrm{cms}}
+      units: null
+    data:
+      name: $R_{\mathrm{pPb}}$
+      units: " "
+  qualifier:
+    reaction: *reaction_Dplus
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
+
+# Figure 7, left, D+/D0
+Table8:
+  table_number: 8
+  figure_number_in_article: 7
+  input:
+    file: ../Results/Dplus/Ratio_Dplus_D0_FD_pPb.root
+    hist: hRatio
+    graph: gRatioSystTot
+    symbol: blue filled square
+    position_panel: left
+  description: non-prompt $\mathrm{D}^+ / \mathrm{D}^0$ yield ratio
+    in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: D+/D0
+    reactions: *reaction_Dzero_Dplus
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: Non-prompt $\mathrm{D}^+$ / non-prompt $\mathrm{D}^0$
+      units: null
+  qualifier:
+    reaction: *reaction_Dzero_Dplus
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br:
+      value: *BR_DplusOverDzero
+      unc: *BRunc_DplusOverDzero
+    lumi: null
+
+# Figure 8, top left, non-prompt Lc/D0
+Table9:
+  table_number: 9
+  figure_number_in_article: 8
+  input:
+    file: ../Results/Dplus/Ratio_Dplus_D0_FD_pPb.root # FIXME
+    hist: hRatio # FIXME
+    graph: gRatioSystTot # FIXME
+    symbol: blue filled square
+    position_panel: top left
+  description: non-prompt $\Lambda_{c}^{+} / \mathrm{D}^0$ yield ratio
+    in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: Lc+/D0
+    reactions: &reaction_Lc_Dzero "PPB --> hb --> Lc+/D0 + X"
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $p_\mathrm{T}$
+      units: $\mathrm{GeV}/c$
+    data:
+      name: Non-prompt $\Lambda_{c}^{+} / \mathrm{D}^0$
+      units: null
+  qualifier:
+    reaction: *reaction_Lc_Dzero
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
+
+# Figure 6, bottom, pT-integrated RpPb of non-prompt Lc/D0
+Table10:
+  table_number: 10
+  figure_number_in_article: 8
+  input:
+    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
+    hist: hCorrYield # FIXME
+    graph: gCorrYieldSystTot # FIXME
+    symbol: blue filled circle
+    position_panel: bottom
+  description: ratio of the $p_\mathrm{{T}}$-integrated ($2 < $p_\mathrm{{T}}$ < 24$ $\mathrm{GeV}/c$)
+    $R_{\mathrm{pPb}}$ of non-prompt $\Lambda_{c}^{+}$ and non-prompt $\mathrm{D}^0
+    in p--Pb collisions at $\sqrt{{s_\mathrm{NN}}}=5.02~\mathrm{{TeV}}$
+    in the rapidity interval $-0.96 < y_{\mathrm{cms}} < -0.04$.
+  keywords:
+    observables: RPA/RPA
+    reactions: *reaction_Lc_Dzero
+    cmenergies: *cmenergies
+  variables:
+    x_axis: # transverse momentum
+      name: $y_{\mathrm{cms}}
+      units: null
+    data:
+      name: $R_{\mathrm{pPb}}$
+      units: " "
+  qualifier:
+    reaction: *reaction_Lc_Dzero
+    energy: *cmenergies
+    rapidity: [-0.96, 0.04]
+  systematics:
+    br: null
+    lumi: null
