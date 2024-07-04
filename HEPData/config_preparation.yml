@@ -49,7 +49,7 @@ Table1:
   qualifier:
     reaction: [ *reaction_Dzero ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Dzero
@@ -84,7 +84,7 @@ Table2:
   qualifier:
     reaction: [ *reaction_Dplus ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Dplus
@@ -119,7 +119,7 @@ Table3:
   qualifier:
     reaction: [ *reaction_Lc ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: # null if not wanted
       value: *BR_Lc
@@ -154,7 +154,7 @@ Table4:
   qualifier:
     reaction: [ *reaction_Dzero, *reaction_Dplus ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
@@ -187,7 +187,7 @@ Table5:
   qualifier:
     reaction: [ *reaction_Lc ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
@@ -220,7 +220,7 @@ Table6:
   qualifier:
     reaction: [ *reaction_Dzero ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
@@ -253,7 +253,7 @@ Table7:
   qualifier:
     reaction: [ *reaction_Dplus ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
@@ -286,7 +286,7 @@ Table8:
   qualifier:
     reaction: [ *reaction_Dzero, *reaction_Dplus ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br:
       value: *BR_DplusOverDzero
@@ -321,7 +321,7 @@ Table9:
   qualifier:
     reaction: [ *reaction_Lc, *reaction_Dzero ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
@@ -355,7 +355,7 @@ Table10:
   qualifier:
     reaction: [ *reaction_Lc, *reaction_Dzero ]
     energy: *cmenergies
-    rapidity: [-0.96, -0.04]
+    rapidity: [-0.96, 0.04]
   systematics:
     br: null
     lumi: null
