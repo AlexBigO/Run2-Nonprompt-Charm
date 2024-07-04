@@ -2,6 +2,7 @@
 file: produce_hep_data_files.py
 brief: script for production of HEPData
 usage: python3 produce_hep_data_files.py CONFIG
+author: Alexandre Bigot <alexandre.bigot@cern.ch>, Strasbourg University
 """
 import argparse
 # pylint: disable=anomalous-backslash-in-string
@@ -83,13 +84,13 @@ def make_table(cfg):
     data.add_uncertainty(data_syst_unc)
 
     if cfg["systematics"]["br"] is not None:
-        br_syst_unc = Uncertainty("sys, branching ratio unc. (%)", is_symmetric=True)
+        br_syst_unc = Uncertainty("sys, uncertainty on branching ratio", is_symmetric=True, is_relative=True)
         br_syst_unc.values = [
             cfg["systematics"]["br"]["unc"] / cfg["systematics"]["br"]["value"] * 100] * len(data_stat["y"])
         data.add_uncertainty(br_syst_unc)
 
     if cfg["systematics"]["lumi"] is not None:
-        lumi_syst_unc = Uncertainty("sys, luminosity unc. (%)", is_symmetric=True)
+        lumi_syst_unc = Uncertainty("sys, uncertainty on luminosity", is_symmetric=True, is_relative=True)
         lumi_syst_unc.values = [cfg["systematics"]["lumi"] * 100] * len(data_stat["y"])
         data.add_uncertainty(lumi_syst_unc)
 
