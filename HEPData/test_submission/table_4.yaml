@@ -1,14 +1,17 @@
 dependent_variables:
 - header:
-    name: $R_{\mathrm{pPb}}$
+    name: Average non-prompt $\mathrm{D}^0$ and $\mathrm{D}^+$ $R_{\mathrm{pPb}}$
+      nuclear modification factor
   qualifiers:
   - name: REACTION
-    value: PPB --> hb --> D0/D+ + X
+    value: P PB --> hb --> D0 X
+  - name: REACTION
+    value: P PB --> hb --> D X
   - name: SQRT(S)/NUCLEON
     units: GEV
     value: 5020.0
   - name: YRAP
-    value: '[-0.96, 0.04] TO 0.04'
+    value: -0.96 TO 0.04
   values:
   - errors:
     - label: stat
@@ -72,8 +75,8 @@ dependent_variables:
     value: 0.3232
 independent_variables:
 - header:
-    name: $p_\mathrm{T}$
-    units: $\mathrm{GeV}/c$
+    name: $p_\mathrm{{T}}$
+    units: $\mathrm{{GeV}}/c$
   values:
   - high: 3.0
     low: 2.0

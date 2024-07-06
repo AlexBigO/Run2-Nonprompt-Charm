@@ -3,12 +3,12 @@ dependent_variables:
     name: $R_{\mathrm{pPb}}$
   qualifiers:
   - name: REACTION
-    value: PPB --> hb --> Lc+ + X
+    value: P PB --> hb --> Lc X
   - name: SQRT(S)/NUCLEON
     units: GEV
     value: 5020.0
   - name: YRAP
-    value: '[-0.96, 0.04] TO 0.04'
+    value: -0.96 TO 0.04
   values:
   - errors:
     - label: stat
@@ -36,8 +36,8 @@ dependent_variables:
     value: 0.64211
 independent_variables:
 - header:
-    name: $p_\mathrm{T}$
-    units: $\mathrm{GeV}/c$
+    name: $p_\mathrm{{T}}$
+    units: $\mathrm{{GeV}}/c$
   values:
   - high: 4.0
     low: 2.0

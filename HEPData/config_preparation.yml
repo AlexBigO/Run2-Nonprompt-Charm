@@ -96,7 +96,7 @@ Table3:
   table_number: 3
   figure_number_in_article: 4
   input:
-    file: ../Results/Lc/CrossSection_Np_Lc.root
+    file: ../Results/Lc/CrossSectionLc_Np.root
     hist: hAverageCorrYield
     graph: gAverageCorrYieldSystTot
     symbol: blue filled square
