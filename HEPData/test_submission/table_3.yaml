@@ -15,9 +15,9 @@ dependent_variables:
     - label: stat
       symerror: 180.71
     - label: sys
-      symerror: 76.95
+      symerror: 72.876
     - label: sys, branching ratio unc. (%)
-      symerror: 5.0
+      symerror: 4.445
     - label: sys, luminosity unc. (%)
       symerror: 3.7
     value: 577.82
@@ -25,9 +25,9 @@ dependent_variables:
     - label: stat
       symerror: 11.554
     - label: sys
-      symerror: 7.008
+      symerror: 6.6761
     - label: sys, branching ratio unc. (%)
-      symerror: 5.0
+      symerror: 4.445
     - label: sys, luminosity unc. (%)
       symerror: 3.7
     value: 54.46
@@ -35,9 +35,9 @@ dependent_variables:
     - label: stat
       symerror: 1.7884
     - label: sys
-      symerror: 0.873
+      symerror: 0.8326
     - label: sys, branching ratio unc. (%)
-      symerror: 5.0
+      symerror: 4.445
     - label: sys, luminosity unc. (%)
       symerror: 3.7
     value: 6.5676
@@ -45,9 +45,9 @@ dependent_variables:
     - label: stat
       symerror: 0.26929
     - label: sys
-      symerror: 0.0877
+      symerror: 0.08581
     - label: sys, branching ratio unc. (%)
-      symerror: 5.0
+      symerror: 4.445
     - label: sys, luminosity unc. (%)
       symerror: 3.7
     value: 0.36588
