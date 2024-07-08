@@ -118,6 +118,7 @@ def main(cfg_input):
     # create Submission instance
     submission = Submission()
     submission.read_abstract(cfg_input["abstract_file"])
+    submission.get_license()
 
     print("Producing HEP data: ...", end="\r")
     for name_table in name_tables:
