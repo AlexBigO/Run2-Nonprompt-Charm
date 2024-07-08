@@ -157,7 +157,7 @@ Table4:
     rapidity: [-0.96, 0.04]
   systematics:
     br: null
-    lumi: null
+    lumi: 0.037
 
 # Figure 5, right, pT-differential RpPb Lc+
 Table5:
@@ -190,7 +190,7 @@ Table5:
     rapidity: [-0.96, 0.04]
   systematics:
     br: null
-    lumi: null
+    lumi: 0.037
 
 # Figure 6, left, pT-integrated RpPb D0
 Table6:
