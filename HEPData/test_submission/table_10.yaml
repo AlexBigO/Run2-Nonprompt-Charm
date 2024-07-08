@@ -1,15 +1,17 @@
 dependent_variables:
 - header:
-    name: $R_{\mathrm{pPb}}$
-    units: ' '
+    name: Non-prompt $\Lambda_{c}^{+}$ / non-prompt $\mathrm{D}^0$ $R_{\mathrm{pPb}}$
+      nuclear modification factor
   qualifiers:
   - name: REACTION
-    value: PPB --> hb --> Lc+/D0 + X
+    value: P PB --> hb --> Lc X
+  - name: REACTION
+    value: P PB --> hb --> D0 X
   - name: SQRT(S)/NUCLEON
     units: GEV
     value: 5020.0
   - name: YRAP
-    value: '[-0.96, 0.04] TO 0.04'
+    value: -0.96 TO 0.04
   values:
   - errors:
     - label: stat
@@ -19,7 +21,7 @@ dependent_variables:
     value: 1.4335
 independent_variables:
 - header:
-    name: $y_{\mathrm{cms}}
+    name: $y_{\mathrm{{cms}}}$
   values:
   - high: 0.04
     low: -0.96
