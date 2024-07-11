@@ -26,9 +26,9 @@ Table1:
   table_number: 1
   figure_number_in_article: 4
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/D0/CrossSection_npD0_DividedByBR_HEP.root
+    hist: hCrossSection
+    graph: Graph
     symbol: blue filled square
     position_panel: top left
   description: Non-prompt $\mathrm{D}^0$ $p_\mathrm{{T}}$-differential production cross section $\mathrm{d}^2\sigma/\mathrm{d}p_\mathrm{T}\mathrm{d}y$
@@ -55,6 +55,7 @@ Table1:
       value: *BR_Dzero
       unc: *BRunc_Dzero
     lumi: *LumiUnc # null if not wanted
+    extrapolation: null
 
 # Figure 4, top right, pT-differential production cross section of non-prompt D+
 Table2:
@@ -90,6 +91,7 @@ Table2:
       value: *BR_Dplus
       unc: *BRunc_Dplus
     lumi: *LumiUnc # null if not wanted
+    extrapolation: null
 
 # Figure 4, bottom, pT-differential production cross section of non-prompt Lambdac+
 Table3:
@@ -125,15 +127,16 @@ Table3:
       value: *BR_Lc
       unc: *BRunc_Lc
     lumi: *LumiUnc # null if not wanted
+    extrapolation: null
   
 # Figure 5, left, average pT-differential RpPb D0, D+
 Table4:
   table_number: 4
   figure_number_in_article: 5
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/D0/RpPb_npD0Dplus_Average_HEP.root
+    hist: AveRpPbFDD0More
+    graph: Graph
     symbol: blue filled square
     position_panel: left
   description: Non-prompt $\mathrm{D}^0$ and $\mathrm{D}^+$ average $p_\mathrm{{T}}$-differential $R_{\mathrm{pPb}}$
@@ -157,7 +160,8 @@ Table4:
     rapidity: [-0.96, 0.04]
   systematics:
     br: null
-    lumi: 0.037
+    lumi: 0.0425 # sqrt(lumiUncpPb**2 + lumiUncpp**2)
+    extrapolation: null
 
 # Figure 5, right, pT-differential RpPb Lc+
 Table5:
@@ -190,16 +194,17 @@ Table5:
     rapidity: [-0.96, 0.04]
   systematics:
     br: null
-    lumi: 0.037
+    lumi: 0.0425 # sqrt(lumiUncpPb**2 + lumiUncpp**2)
+    extrapolation: null
 
 # Figure 6, left, pT-integrated RpPb D0
 Table6:
   table_number: 6
   figure_number_in_article: 6
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/integrated_RpPb_Nonprompt_Dzero_Dplus.root
+    hist: hIntRpPbDzero
+    graph: gIntRpPbSystTotWoExtrDzero
     symbol: black filled square
     position_panel: left
   description: Non-prompt $\mathrm{D}^0$ $p_\mathrm{{T}}$-integrated $R_{\mathrm{pPb}}$
@@ -211,7 +216,7 @@ Table6:
     reactions: [ *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
-    x_axis: # transverse momentum
+    x_axis: # rapidity
       name: $y_{\mathrm{{cms}}}$
       units: null
     data:
@@ -224,15 +229,16 @@ Table6:
   systematics:
     br: null
     lumi: null
+    extrapolation: [0.11, 0.06]
 
 # Figure 6, left, pT-integrated RpPb D+
 Table7:
   table_number: 7
   figure_number_in_article: 6
   input:
-    file: ../Results/Dplus/CrossSection_Dplus_Nonprompt_Divided_by_BR_pPb.root # FIXME
-    hist: hCorrYield # FIXME
-    graph: gCorrYieldSystTot # FIXME
+    file: ../Results/integrated_RpPb_Nonprompt_Dzero_Dplus.root
+    hist: hIntRpPbDplus
+    graph: gIntRpPbSystTotWoExtrDplus
     symbol: brown filled circle
     position_panel: left
   description: Non-prompt $\mathrm{D}^+$ $p_\mathrm{{T}}$-integrated $R_{\mathrm{pPb}}$
@@ -244,7 +250,7 @@ Table7:
     reactions: [ *reaction_Dplus ]
     cmenergies: *cmenergies
   variables:
-    x_axis: # transverse momentum
+    x_axis: # rapidity
       name: $y_\mathrm{cms}$
       units: null
     data:
@@ -257,6 +263,7 @@ Table7:
   systematics:
     br: null
     lumi: null
+    extrapolation: [0.11, 0.03]
 
 # Figure 7, left, non-prompt D+/D0
 Table8:
@@ -292,15 +299,16 @@ Table8:
       value: *BR_DplusOverDzero
       unc: *BRunc_DplusOverDzero
     lumi: null
+    extrapolation: null
 
 # Figure 8, top left, non-prompt Lc/D0
 Table9:
   table_number: 9
   figure_number_in_article: 8
   input:
-    file: ../Results/Lc/LcOverD0.root # FIXME
-    hist: hLcOverD0 # FIXME
-    graph: gFDLcOverD0Systematics # FIXME
+    file: ../Results/Lc/LcOverD0.root
+    hist: hLcOverD0
+    graph: gFDLcOverD0Systematics
     symbol: blue filled square
     position_panel: top left
   description: Non-prompt $\Lambda_{c}^{+}$ / non-prompt $\mathrm{D}^0$ yield ratio
@@ -325,15 +333,16 @@ Table9:
   systematics:
     br: null
     lumi: null
+    extrapolation: null
 
 # Figure 8, bottom, pT-integrated RpPb of non-prompt Lc/D0
 Table10:
   table_number: 10
   figure_number_in_article: 8
   input:
-    file: ../Results/Lc/RpPbDoubleRatio.root # FIXME
-    hist: h1pTIntRpPbDoubleRatio # FIXME
-    graph: Graph # FIXME
+    file: ../Results/Lc/RpPbDoubleRatio.root
+    hist: h1pTIntRpPbDoubleRatio
+    graph: Graph
     symbol: blue filled circle
     position_panel: bottom
   description: Ratio of the $p_\mathrm{{T}}$-integrated ($2 < p_\mathrm{{T}} < 24$ $\mathrm{{GeV}}/c$)
@@ -346,7 +355,7 @@ Table10:
     reactions: [ *reaction_Lc, *reaction_Dzero ]
     cmenergies: *cmenergies
   variables:
-    x_axis: # transverse momentum
+    x_axis: # rapidity
       name: $y_{\mathrm{{cms}}}$
       units: null
     data:
@@ -359,3 +368,4 @@ Table10:
   systematics:
     br: null
     lumi: null
+    extrapolation: null
