@@ -14,15 +14,14 @@ comment: The production cross sections of $\mathrm{D}^0$, $\mathrm{D}^+$, and $\
   in the prompt charm sector, and do not show a significant $p_\mathrm{{T}}$ dependence.
   The $p_\mathrm{{T}}$-integrated cross sections and $p_\mathrm{{T}}$-integrated $R_{\mathrm{pPb}}$
   of non-prompt $\mathrm{D}^0$ and $\mathrm{D}^+$ mesons are also computed by extrapolating
-  the visible cross sections down to $p_\mathrm{{T}}$ = 0.The non-prompt D-meson $R_{\mathrm{pPb}}$integrated
-  over $p_\mathrm{{T}}$ is compatible with unity and with model calculations implementing
-  modification of the parton distribution functions of nucleons bound in nuclei with
-  respect to free nucleons. The non-prompt $\Lambda_{c}^{+}/\mathrm{D}^0$ and $\mathrm{D}^+/\mathrm{D}^0$
-  production ratios are computed to investigate hadronisation mechanisms of beauty
-  quarks into mesons and baryons. The measured ratios as a function of $p_\mathrm{{T}}$
-  display a similar trend to that measured for charm hadrons in the same collision
-  system, indicating a modification of the hadronisation from pp to p--Pb collisions
-  for beauty quarks similar to that observed for charm quarks.
+  the visible cross sections down to $p_\mathrm{{T}}$ = 0.The non-prompt D-meson $R_{\mathrm{pPb}}$
+  integrated over $p_\mathrm{{T}}$ is compatible with unity and with model calculations
+  implementing modification of the parton distribution functions of nucleons bound
+  in nuclei with respect to free nucleons. The non-prompt $\Lambda_{c}^{+}/\mathrm{D}^0$
+  and $\mathrm{D}^+/\mathrm{D}^0$ production ratios are computed to investigate hadronisation
+  mechanisms of beauty quarks into mesons and baryons. The measured ratios as a function
+  of $p_\mathrm{{T}}$ display a similar trend to that measured for charm hadrons in
+  the same collision system.
 data_license:
   description: CC0 enables reusers to distribute, remix, adapt, and build upon the
     material in any medium or format, with no conditions.
