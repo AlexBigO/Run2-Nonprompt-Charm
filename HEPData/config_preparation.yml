@@ -186,7 +186,7 @@ Table5:
       name: $p_\mathrm{{T}}$
       units: $\mathrm{{GeV}}/c$
     data:
-      name: $R_{\mathrm{pPb}}$
+      name: Non-prompt $\Lambda_{c}^{+}$ $R_{\mathrm{pPb}}$ nuclear modification factor
       units: null
   qualifier:
     reaction: [ *reaction_Lc ]
