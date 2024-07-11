@@ -9,7 +9,7 @@ BR: # 2020 BRs
 BRunc: # 2020 BRs
   Dzero: &BRunc_Dzero 0.00031
   Dplus: &BRunc_Dplus 0.0016
-  Lc: &BRunc_Lc 0.05 # put combined unc
+  Lc: &BRunc_Lc 0.044448 # put combined unc
   DplusOverDzero: &BRunc_DplusOverDzero 0.019
 
 LumiUnc: &LumiUnc 0.037
@@ -98,7 +98,7 @@ Table3:
   table_number: 3
   figure_number_in_article: 4
   input:
-    file: ../Results/Lc/CrossSection_Np_Lc.root
+    file: ../Results/Lc/CrossSectionLc_Np.root
     hist: hAverageCorrYield
     graph: gAverageCorrYieldSystTot
     symbol: blue filled square

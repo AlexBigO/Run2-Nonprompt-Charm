@@ -13,109 +13,121 @@ dependent_variables:
   values:
   - errors:
     - label: stat
-      symerror: 95.268
+      symerror: 163.29
     - label: sys
-      symerror: 31.331
+      symerror: 125.42
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 329.0
+    value: 1337.0
   - errors:
     - label: stat
-      symerror: 29.162
+      symerror: 72.52
     - label: sys
-      symerror: 11.335
+      symerror: 56.769
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 162.45
+    value: 865.71
   - errors:
     - label: stat
-      symerror: 10.953
+      symerror: 33.123
     - label: sys
-      symerror: 5.3346
+      symerror: 18.633
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 88.07
+    value: 380.34
   - errors:
     - label: stat
-      symerror: 5.9645
+      symerror: 17.603
     - label: sys
-      symerror: 3.2688
+      symerror: 9.9095
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 54.525
+    value: 227.34
   - errors:
     - label: stat
-      symerror: 3.7187
+      symerror: 11.083
     - label: sys
-      symerror: 1.7897
+      symerror: 5.0143
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 29.853
+    value: 125.36
   - errors:
     - label: stat
-      symerror: 2.5782
+      symerror: 7.2969
     - label: sys
-      symerror: 1.1751
+      symerror: 2.7838
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 19.602
+    value: 71.876
   - errors:
     - label: stat
-      symerror: 1.1581
+      symerror: 5.1675
     - label: sys
-      symerror: 0.64656
+      symerror: 1.7616
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 10.823
+    value: 45.485
   - errors:
     - label: stat
-      symerror: 0.71869
+      symerror: 2.273
     - label: sys
-      symerror: 0.38234
+      symerror: 0.88529
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 4.9776
+    value: 18.874
   - errors:
     - label: stat
-      symerror: 0.29668
+      symerror: 1.4408
     - label: sys
-      symerror: 0.15632
+      symerror: 0.51957
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 2.0351
+    value: 9.9531
   - errors:
     - label: stat
-      symerror: 0.089495
+      symerror: 0.58774
     - label: sys
-      symerror: 0.033897
+      symerror: 0.15914
     - label: sys, uncertainty on branching ratio
       symerror: 0.78481%
     - label: sys, uncertainty on luminosity
       symerror: 3.7%
-    value: 0.3232
+    value: 2.9055
+  - errors:
+    - label: stat
+      symerror: 0.2069
+    - label: sys
+      symerror: 0.047722
+    - label: sys, uncertainty on branching ratio
+      symerror: 0.78481%
+    - label: sys, uncertainty on luminosity
+      symerror: 3.7%
+    value: 0.73636
 independent_variables:
 - header:
     name: $p_\mathrm{{T}}$
     units: $\mathrm{{GeV}}/c$
   values:
+  - high: 2.0
+    low: 1.0
   - high: 3.0
     low: 2.0
   - high: 4.0
