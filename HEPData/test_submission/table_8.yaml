@@ -5,7 +5,7 @@ dependent_variables:
   - name: REACTION
     value: P PB --> hb --> D0 X
   - name: REACTION
-    value: P PB --> hb --> D X
+    value: P PB --> hb --> D+ X
   - name: SQRT(S)/NUCLEON
     units: GEV
     value: 5020.0
