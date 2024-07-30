@@ -16,7 +16,7 @@ dependent_variables:
     - label: sys
       symerror: 0.12
     - asymerror:
-        minus: 0.11
+        minus: -0.11
         plus: 0.06
       label: sys, uncertainty on extrapolation
     value: 1.04

@@ -93,11 +93,11 @@ def make_table(cfg):
         lumi_syst_unc = Uncertainty("sys, uncertainty on luminosity", is_symmetric=True, is_relative=True)
         lumi_syst_unc.values = [cfg["systematics"]["lumi"] * 100] * len(data_stat["y"])
         data.add_uncertainty(lumi_syst_unc)
-        
+
     if cfg["systematics"]["extrapolation"] is not None:
-    		extr_syst_unc = Uncertainty("sys, uncertainty on extrapolation", is_symmetric=False)
-    		extr_syst_unc.values = [ cfg["systematics"]["extrapolation"] ] * len(data_stat["y"])
-    		data.add_uncertainty(extr_syst_unc)
+        extr_syst_unc = Uncertainty("sys, uncertainty on extrapolation", is_symmetric=False)
+        extr_syst_unc.values = [cfg["systematics"]["extrapolation"]] * len(data_stat["y"])
+        data.add_uncertainty(extr_syst_unc)
 
     # add variables to Table instance
     table.add_variable(x_variable)

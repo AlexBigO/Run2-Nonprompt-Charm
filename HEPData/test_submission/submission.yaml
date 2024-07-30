@@ -65,7 +65,7 @@ keywords:
   - D production
 - name: reactions
   values:
-  - P PB --> hb --> D X
+  - P PB --> hb --> D+ X
 - name: cmenergies
   values:
   - 5020.0
@@ -105,7 +105,7 @@ keywords:
 - name: reactions
   values:
   - P PB --> hb --> D0 X
-  - P PB --> hb --> D X
+  - P PB --> hb --> D+ X
 - name: cmenergies
   values:
   - 5020.0
@@ -156,11 +156,11 @@ keywords:
   - RPA
 - name: reactions
   values:
-  - P PB --> hb --> D X
+  - P PB --> hb --> D+ X
 - name: cmenergies
   values:
   - 5020.0
-location: Data from Figure 6, left panel (brown filled circle)
+location: Data from Figure 6, left panel (red empty square)
 name: Table 7
 ---
 data_file: table_8.yaml
@@ -178,7 +178,7 @@ keywords:
 - name: reactions
   values:
   - P PB --> hb --> D0 X
-  - P PB --> hb --> D X
+  - P PB --> hb --> D+ X
 - name: cmenergies
   values:
   - 5020.0
@@ -227,5 +227,5 @@ keywords:
 - name: cmenergies
   values:
   - 5020.0
-location: Data from Figure 8, bottom panel (blue filled circle)
+location: Data from Figure 8, bottom panel (blue filled square)
 name: Table 10

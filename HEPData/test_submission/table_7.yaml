@@ -3,7 +3,7 @@ dependent_variables:
     name: Non-prompt $\mathrm{D}^+$ $R_{\mathrm{pPb}}$ nuclear modification factor
   qualifiers:
   - name: REACTION
-    value: P PB --> hb --> D X
+    value: P PB --> hb --> D+ X
   - name: SQRT(S)/NUCLEON
     units: GEV
     value: 5020.0
@@ -16,7 +16,7 @@ dependent_variables:
     - label: sys
       symerror: 0.11
     - asymerror:
-        minus: 0.11
+        minus: -0.11
         plus: 0.03
       label: sys, uncertainty on extrapolation
     value: 0.86
