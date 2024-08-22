@@ -18,7 +18,7 @@ def main():
 	names = ["Dzero", "Dplus"]
 	
 	values = [1.04, 0.86]
-	unc_stat = [0.11, 0.19]
+	unc_stat = [0.10, 0.19]
 	unc_syst = [0.12, 0.11]
 	unc_extr_plus = [0.06, 0.03]
 	unc_extr_minus = [0.11, 0.11]
