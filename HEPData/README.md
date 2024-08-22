@@ -29,4 +29,4 @@ hepdata-validate -d test_submission
 ## HEP Sandbox
 Go to the [HEPSandbox](https://www.hepdata.net/record/sandbox) web page and upload the `submission.tar.gz` (output of the HEP data production script).
 
-The latest result is [here](https://www.hepdata.net/record/sandbox/1722358860).
+The latest result is [here](https://www.hepdata.net/record/sandbox/1724322379).

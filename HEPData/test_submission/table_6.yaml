@@ -12,7 +12,7 @@ dependent_variables:
   values:
   - errors:
     - label: stat
-      symerror: 0.11
+      symerror: 0.1
     - label: sys
       symerror: 0.12
     - asymerror:
