@@ -334,8 +334,8 @@ void DrawRpPbDplus() {
 
   SetStyleHisto(RpPbFDD0);
   RpPbFDD0->SetStats(0);
-  RpPbFDD0->SetLineColor(kAzure + 3);
-  RpPbFDD0->SetMarkerColor(kAzure + 3);
+  RpPbFDD0->SetLineColor(kAzure + 2);
+  RpPbFDD0->SetMarkerColor(kAzure + 2);
   RpPbFDD0->SetMarkerStyle(20);
 
   TLatex info;
